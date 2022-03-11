@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Main from './components/main/Main';
+import HandleStaffInfo from './components/main/Main';
 
 ReactDOM.render(
-    <Main />,
+    <HandleStaffInfo />,
   document.getElementById('root')
 );
 
