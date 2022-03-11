@@ -1,11 +1,11 @@
-import './components/header/header.js'
-import './components/main/ShowStaffInfo.js'
-import './components/footer/footer.js'
+import "./components/header/header.js";
+import "./components/footer/footer.js";
+import ShowStaffInfo from "./components/main/ShowStaffInfo.js";
 
 function App() {
   return (
-    <div >
-    
+    <div>
+      <ShowStaffInfo />
     </div>
   );
 }

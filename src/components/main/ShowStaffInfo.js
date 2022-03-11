@@ -1,24 +1,34 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./ShowStaffInfo.css";
-import { STAFFS } from "../../staffs.jsx";
+import { STAFFS , DEPARTMENTS } from "../../staffs.js";
 
-export default function ShowStaffInfo(STAFFS) {
+export default function ShowStaffInfo() {
   const [info, setInfo] = useState("bấm vào tên nhân viên để xem thông tin");
 
-  const indexes = [0, 1, 2, 3, 4, 5];
-  const ChangeStaffInfo = () => {
-    setInfo(STAFFS); // how to make a new state === staff's info that be triggered by event
+  const changeStaffInfo = (item) => {
+    setInfo(item);
   };
 
   return (
     <div className="container">
-      {indexes.map((index) => (
-        <div key={STAFFS.id} onClick={ChangeStaffInfo}>
-          {STAFFS[index].name}
-        </div>
-      ))}
+      {STAFFS &&
+        STAFFS.map((item) => (
+          <div key={item.id} onClick={() => changeStaffInfo(item)}>
+            {item.name}
+          </div>
+        ))}
 
-      <div> {info} </div>
+      {info ? (
+        <ul>
+          <li>Họ và tên : {info.name}</li>
+          <li>Ngày sinh : {info.doB}</li>
+          <li>Ngày vào công ty : {info.startDate}</li>
+          {/* <li>Phòng ban : {info.department}</li> */}
+          <li>Số ngày nghỉ còn lại : {info.annualLeave}</li>
+          <li>Số ngày đã làm thêm : {info.overTime}</li>
+        </ul>
+      ) : "bấm vào tên nhân viên để xem thông tin"}
     </div>
   );
 }
+
