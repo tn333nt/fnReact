@@ -13,13 +13,13 @@ export default function ShowStaffInfo() {
     <div className="container">
       {STAFFS &&
         STAFFS.map((item) => (
-          <div key={item.id} onClick={() => changeStaffInfo(item)}>
+          <div key={item.id} className="item" onClick={() => changeStaffInfo(item)}>
             {item.name}
           </div>
         ))}
 
       {info ? (
-        <ul>
+        <ul className="item">
           <li>Họ và tên : {info.name}</li>
           <li>Ngày sinh : {info.doB}</li>
           <li>Ngày vào công ty : {info.startDate}</li>
