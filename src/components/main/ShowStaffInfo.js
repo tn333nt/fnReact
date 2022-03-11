@@ -5,19 +5,20 @@ import { STAFFS } from "../../staffs.jsx";
 export default function ShowStaffInfo(STAFFS) {
   const [info, setInfo] = useState("bấm vào tên nhân viên để xem thông tin");
 
+  const indexes = [0, 1, 2, 3, 4, 5];
   const ChangeStaffInfo = () => {
-    setInfo(); // still need 1f to handle index of info render?
+    setInfo(STAFFS); // how to make a new state === staff's info that be triggered by event
   };
 
   return (
     <div className="container">
-      <div onClick={ChangeStaffInfo}>{STAFFS.name[0]}</div>
-      <div onClick={ChangeStaffInfo}>{STAFFS.name[1]}</div>
-      <div onClick={ChangeStaffInfo}>{STAFFS.name[2]}</div>
-      <div onClick={ChangeStaffInfo}>{STAFFS.name[3]}</div>
-      <div onClick={ChangeStaffInfo}>{STAFFS.name[4]}</div>
-      <div onClick={ChangeStaffInfo}>{STAFFS.name[5]}</div>
-      <div key={STAFFS.id}> {info} </div>
+      {indexes.map((index) => (
+        <div key={STAFFS.id} onClick={ChangeStaffInfo}>
+          {STAFFS[index].name}
+        </div>
+      ))}
+
+      <div> {info} </div>
     </div>
   );
 }
