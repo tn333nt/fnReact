@@ -10,6 +10,7 @@ export default function ShowStaffsInfo() {
   return (
     <Routes>
       <Route className="container">
+        <h1>Nhân viên</h1><hr/>
         {STAFFS &&
           STAFFS.map((item) => (
             <div
