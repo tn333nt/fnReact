@@ -1,5 +1,4 @@
-
-import Header from"./components/header/NavBar.js";
+import Header from "./components/header/NavBar.js";
 import Footer from "./components/footer/Footer.js";
 import ShowStaffsInfo from "./components/main/ShowStaffsInfo.js";
 
@@ -13,3 +12,5 @@ function App() {
 }
 
 export default App;
+
+// 123
