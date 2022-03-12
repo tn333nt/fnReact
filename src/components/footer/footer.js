@@ -50,3 +50,10 @@ import {
     );
   }
   
+
+// sao ko push lên remote đc ?
+// sao clone về push lại đc ?
+// sao update footer 3 files , mà 2 files nó push lên đc , file còn lại thì ko ?
+// trong khi add tất cả rồi 
+// và check lại push thử lại thì nó cũng ghi 'everything up-to-date' rồi ?
+// sao cùng là dùng 3 câu lệnh mà lúc push đc , lúc thì ko ???
