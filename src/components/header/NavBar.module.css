@@ -1,0 +1,21 @@
+
+nav {
+    color: #fff;
+    background-color: #007bfe;
+    margin : 0;
+    padding : 1rem;
+}
+
+ul {
+    display : flex;
+    justify-content : start;
+}
+
+li {
+    list-style-type: none;
+    font-size: 21px;
+}
+
+li:hover {
+    font-size: x-large;
+}

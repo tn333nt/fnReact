@@ -1,7 +1,8 @@
+
+import "./ShowStaffsInfo.module.css";
 import { useState } from "react";
-import "./ShowStaffsInfo.css";
 import { STAFFS } from "../../staffs.js";
-import dateFormat from "dateformat";
+// import dateFormat from "dateformat";
 
 export default function ShowStaffsInfo() {
   const [info, setInfo] = useState(null);

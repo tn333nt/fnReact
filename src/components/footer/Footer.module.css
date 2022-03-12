@@ -1,0 +1,15 @@
+
+
+footer {
+    background-color: #77d5f1;
+}
+
+.contact {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.copyright {
+    text-align: center;
+}

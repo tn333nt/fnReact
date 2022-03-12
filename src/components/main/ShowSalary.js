@@ -1,3 +1,3 @@
 
 
-import "./ShowSalary.css" 
+import "./ShowSalary.module.css" 

@@ -1,3 +1,3 @@
 
 
-import "./ShowDepartment.css"
+import "./ShowDepartment.module.css"
