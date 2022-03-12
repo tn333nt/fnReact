@@ -1,1 +1,26 @@
 
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    grid-gap: 5px;
+    margin: 1.5rem;
+  }
+  
+  .item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  li {
+    list-style-type: none;
+    padding: 10px;
+  }
+  
+  li:first-child {
+    font-size: 30px;
+  }
+
+  li:last-child {
+      background-color: #ccc;
+      border-style: groove;
+  }
