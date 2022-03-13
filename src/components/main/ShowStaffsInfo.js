@@ -6,7 +6,7 @@ import "./ShowStaffsInfo.module.css";
 
 export default function ShowStaffsInfo() {
 
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useState([]);
 
   const handleInfo = (item) => {
     setInfo(item);
