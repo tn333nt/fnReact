@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import dateFormat from "dateformat";
-import { info } from "./ShowStaffsInfo.js";
 import "./ShowStaffDetails.module.css"
 
-export default function ShowStaffDetails() {
+export default function ShowStaffDetails({info}) {
+
   const navigate = useNavigate();
 
   return (
@@ -35,4 +35,4 @@ export default function ShowStaffDetails() {
   );
 }
 
-// why can not import info ? 
+
