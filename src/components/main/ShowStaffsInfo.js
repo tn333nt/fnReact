@@ -27,6 +27,7 @@ export default function ShowStaffsInfo() {
                 />
               </Link>
               <p>{item.name}</p>
+              <h1>hellos</h1>
             </div>
           ))}
       </Route>
