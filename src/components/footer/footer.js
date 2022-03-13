@@ -30,6 +30,7 @@ export default function Footer() {
             : +0987654321
           </p>
         </div>
+
         <div className="contactIcons">
           <span>
             <FaGooglePlusSquare />
@@ -41,6 +42,7 @@ export default function Footer() {
             <FaEnvelopeSquare />
           </span>
         </div>
+
       </div>
 
       <div className="copyright">
