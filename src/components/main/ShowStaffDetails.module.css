@@ -1,0 +1,21 @@
+
+.main {
+    display : grid;
+    grid-template-columns: repeat(12,1fr);
+}
+
+img {
+    grid-column: 1/3;
+}
+
+@media screen and (max-width: 1086px ) {
+    img {
+        grid-column: 1/4;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    img {
+        grid-column: 1/-1;
+    }
+}

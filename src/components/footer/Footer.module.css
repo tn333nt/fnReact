@@ -4,12 +4,20 @@ footer {
     background-color: #77d5f1;
 }
 
-.contact {
+/* sao ko nhận css từ mấy cái select cụ thể này ?? */
+/* .contact { */
+footer:first-child {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+
+    font-size: 99px !important;
 }
+/* sao như kiểu chúng nó ko tồn tại vậy:D */
 
 .copyright {
     text-align: center;
+    /* test */
+    font-size:99px; 
 }
+

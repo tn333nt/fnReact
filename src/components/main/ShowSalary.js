@@ -3,7 +3,7 @@
 import "./ShowSalary.module.css" 
 import { STAFFS } from "../../staffs.js";
 
-export default function ShowStaffsInfo() {
+export default function ShowSalary() {
 
     const calculateSalary = (item) => {
         const salaryScale = item.salaryScale

@@ -3,7 +3,7 @@ import {
   FaRegIdCard,
   FaUsers,
   FaMoneyBillAlt,
-} from "react-icons";
+} from "react-icons/fa";
 import "./NavBar.module.css";
 
 
