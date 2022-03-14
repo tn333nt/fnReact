@@ -6,7 +6,8 @@
     margin: 1.5rem;
   }
   
-  .item__department {
+  .item_department {
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin: 5px;
   }

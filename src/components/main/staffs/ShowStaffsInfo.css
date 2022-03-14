@@ -1,6 +1,6 @@
 .container_staffsInfo {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(174px, 1fr));
   grid-gap: 5px;
   margin: 1.5rem;
 }
@@ -8,6 +8,8 @@
 .item_staffsInfo {
   border: 1px solid #ccc;
   border-radius: 5px;
+  text-align: center;
+  margin: 10px;
 }
 
 .item_staffsInfo li {
@@ -17,4 +19,8 @@
 
 .item_staffsInfo li:first-child {
   font-size: 30px;
+}
+
+.item_staffsInfo img{
+  width: 100%;
 }

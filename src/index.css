@@ -15,11 +15,14 @@ code {
 a {
   text-decoration: none;
   padding: 21px;
+  color :#fff;
 }
 
 a:hover {
   font-size: larger;
   cursor: pointer;
 }
+
+
 
 

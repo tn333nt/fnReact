@@ -1,27 +1,27 @@
-
 .container_salary {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-gap: 5px;
-    margin: 1.5rem;
-  }
-  
-  .item_salary {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .item_salary li {
-    list-style-type: none;
-    padding: 10px;
-  }
-  
-  .item_salary:first-child {
-    font-size: 30px;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  grid-gap: 5px;
+  margin: 1.5rem;
+}
 
-  .item_salary:last-child {
-      background-color: #ccc;
-      border-style: groove;
-  }
+.item_salary {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin : 0.5rem;
+}
+
+.item_salary li {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.item_salary li:first-child {
+  font-size: 30px;
+}
+
+.item_salary li:last-child {
+  border: 3px groove #eee;
+  background-color: #eee;
+  margin : 1.5rem;
+}
