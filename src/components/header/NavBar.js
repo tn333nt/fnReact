@@ -4,7 +4,7 @@ import {
   FaUsers,
   FaMoneyBillAlt,
 } from "react-icons/fa";
-import "./NavBar.module.css";
+import "./NavBar.css";
 
 
 export default function NavBar() {
