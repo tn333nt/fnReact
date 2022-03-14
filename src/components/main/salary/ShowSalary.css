@@ -1,27 +1,27 @@
 
-.container {
+.container_salary {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-gap: 5px;
     margin: 1.5rem;
   }
   
-  .item {
+  .item_salary {
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align: center;
   }
   
-  li {
+  .item_salary li {
     list-style-type: none;
     padding: 10px;
   }
   
-  li:first-child {
+  .item_salary:first-child {
     font-size: 30px;
   }
 
-  li:last-child {
+  .item_salary:last-child {
       background-color: #ccc;
       border-style: groove;
   }

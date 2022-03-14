@@ -6,8 +6,8 @@ export default function ShowStaffDetails({info}) {
   const navigate = useNavigate();
 
   return (
-    <div className="container">
-      <div className="nav">
+    <div className="container_staffDetails">
+      <div className="nav_staffDetails">
         <p onClick={navigate(-1)}>
           {" "}
           Nhân viên
@@ -15,7 +15,7 @@ export default function ShowStaffDetails({info}) {
         </p>
       </div>
 
-      <div className="main">
+      <div className="item_staffDetails">
         <img src="{info.image}" alt="" />
         <ul>
           <li>Họ và tên : {info.name}</li>

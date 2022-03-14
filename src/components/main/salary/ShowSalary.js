@@ -1,5 +1,5 @@
 import "./ShowSalary.css";
-import { STAFFS } from "../../staffs.js";
+import { STAFFS } from "../../../staffs.js";
 
 export default function ShowSalary() {
   const calculateSalary = (item) => {
@@ -15,9 +15,9 @@ export default function ShowSalary() {
   };
 
   return (
-    <div className="container">
+    <div className="container_salary">
       {STAFFS.map((item) => (
-        <ul key={item.id} className="item">
+        <ul key={item.id} className="item_salary">
           <li>{item.name}</li>
           <li>Mã nhân viên : {item.id}</li>
           <li>Hệ số lương : {item.salaryScale}</li>

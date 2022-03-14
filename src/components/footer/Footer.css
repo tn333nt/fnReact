@@ -1,21 +1,18 @@
-
-
 footer {
-    background-color: #77d5f1;
+  background-color: #77d5f1;
 }
 
-.contact {
-    display: flex;
-    justify-content: space-evenly;
+.item_footer {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .contactIcons {
-    display: flex;
-    align-items: center;    
+  display: flex;
+  align-items: center;
 }
 
 .copyright {
-    text-align: center;
-    padding-bottom: 12px;
+  text-align: center;
+  padding-bottom: 12px;
 }
-

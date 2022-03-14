@@ -1,21 +1,17 @@
 
-nav {
+.container_navBar {
     color: #fff;
     background-color: #007bfe;
     margin : 0;
-    padding : 1rem;
+    padding : 0;
 }
 
-ul {
+.item_navBar {
     display : flex;
     justify-content : start;
-}
-
-li {
     list-style-type: none;
+    padding: 12px;
     font-size: 21px;
+    margin-top: 0;
 }
 
-li:hover {
-    font-size: x-large;
-}

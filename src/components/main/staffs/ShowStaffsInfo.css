@@ -1,20 +1,20 @@
-.container {
+.container_staffsInfo {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   grid-gap: 5px;
   margin: 1.5rem;
 }
 
-.item {
+.item_staffsInfo {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-li {
+.item_staffsInfo li {
   list-style-type: none;
   padding: 10px;
 }
 
-li:first-child {
+.item_staffsInfo li:first-child {
   font-size: 30px;
 }

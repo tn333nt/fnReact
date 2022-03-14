@@ -1,6 +1,6 @@
 import { useNavigate , useParams } from "react-router-dom";
 // import { useState } from "react"
-import { STAFFS } from "../../staffs.js";
+import { STAFFS } from "../../../staffs.js";
 // import ShowStaffDetails from "./ShowStaffDetails";
 import "./ShowStaffsInfo.css";
 
@@ -12,10 +12,10 @@ export default function ShowStaffsInfo() {
   const { staffId } = useParams()
 
   return (
-    <div className="container">
+    <div className="container_staffsInfo">
       {STAFFS &&
         STAFFS.map((item) => (
-          <div key={item.id} className="item">
+          <div key={item.id} className="item_staffsInfo">
           <img
             src="{item.image}"
             alt=""
