@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/header/NavBar.js";
-import Footer from "./components/footer/Footer.js";
+import Footer from "../src/components/footer/footer.js";
 import ShowStaffsInfo from "./components/main/staffs/ShowStaffsInfo.js";
 import ShowStaffDetails from "./components/main/staffs/staff/ShowStaffDetails.js";
 import ShowDepartment from "./components/main/department/ShowDepartment.js";
