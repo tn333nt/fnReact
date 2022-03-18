@@ -1,7 +1,11 @@
 import { STAFFS } from "../../../../../../staffs.js"
 import "./ShowForm.css"
 
-export default function ShowForm {
+export default function ShowForm() {
+
+    const handleSubmit = () => {
+        
+    }
 
     return (
         <div className="background_ShowForm">

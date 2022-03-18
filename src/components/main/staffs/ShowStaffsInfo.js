@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { STAFFS } from "../../../staffs.js";
 import "./ShowStaffsInfo.css";
+import AddStaff from "../functions/add/AddStaff.js";
+import SearchStaffs from "../functions/search/SearchStaffs.js";
 
 export default function ShowStaffsInfo() {
   const navigate = useNavigate();
