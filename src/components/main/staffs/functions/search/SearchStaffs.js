@@ -6,18 +6,20 @@ export default function SearchStaffs() {
 
     const [searchData, setSearchData] = useState()
 
-    const handleSubmit = (e) => {
-        const value = e.target.value.toLowerCase()
-
-        setSearchData(value)
-
-        // combine into render later
-        /**
-         * { searchData ? (
-         * searchData.filter(data => data.name.toLowerCase().includes(value)))}
-         */
-
-    }
+    // const optimiseSearch = useMemo(() => {
+        const test = (e) => {
+            const value = e.target.value.toLowerCase()
+    
+            setSearchData(value)
+    
+            // combine into render later
+            /**
+             * dat1 ham handleSearch o dau day ?
+             * { searchData ? (
+             * searchData.filter(data => data.name.toLowerCase().includes(value)))}
+             */
+        }
+    // }, []) // 
 
     return (
         <div className="container_SearchStaffs">
@@ -25,11 +27,9 @@ export default function SearchStaffs() {
                 type="text"
                 value={searchData}
                 placeholder="search..."
-                onChange={handleSubmit}
+                onChange={test}
             />
-            <button>
-                Search
-            </button>
+            <button> Search </button>
         </div>
     )
 }
