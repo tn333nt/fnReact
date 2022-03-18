@@ -5,7 +5,7 @@ import {
   FaFax,
   FaPhoneAlt,
 } from "react-icons/fa";
-import "./Footer.css";
+import "./Footer.module.css";
 
 export default function Footer() {
   return (
