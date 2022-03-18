@@ -13,8 +13,8 @@ export default function ShowStaffDetails() {
   return (
     <div className="container_staffDetails">
       <div className="nav_staffDetails">
-        <div onClick={() => navigate(-1)}>
-          <span className="goBack">Nhân viên</span>
+        <div>
+          <span  onClick={() => navigate(-1)} className="goBack">Nhân viên</span>
           <span>/ {staff.name} </span>
         </div>
       </div>

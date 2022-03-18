@@ -5,12 +5,12 @@ import {
   FaFax,
   FaPhoneAlt,
 } from "react-icons/fa";
-import "./Footer.module.css";
+import "./Footer.css";
 
 export default function Footer() {
   return (
     <footer>
-      <div className="contact">
+      <div className="item_footer">
         <div className="contactInfos">
           <h3>Out Address</h3>
           <p>
@@ -52,11 +52,3 @@ export default function Footer() {
   );
 }
 
-// sao ko push lên remote đc ?
-// sao clone về push lại đc ?
-// sao update footer 3 files , mà 2 files nó push lên đc , file còn lại thì ko ?
-// trong khi add tất cả rồi
-// và check lại push thử lại thì nó cũng ghi 'everything up-to-date' rồi ?
-// sao cùng là dùng 3 câu lệnh mà lúc push đc , lúc thì ko ???
-
-// Change file

@@ -7,6 +7,12 @@ footer {
   justify-content: space-evenly;
 }
 
+.contactInfos > p:nth-child(2) {
+  display: flex;
+  flex-wrap: wrap;
+  width : 27vh;
+}
+
 .contactIcons {
   display: flex;
   align-items: center;
