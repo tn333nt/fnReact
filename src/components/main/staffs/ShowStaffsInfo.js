@@ -7,6 +7,10 @@ export default function ShowStaffsInfo() {
 
   return (
     <>
+      <div className="functions">
+        <AddStaff />
+        <SearchStaffs />
+      </div>
       <h1>Nhân viên</h1> <hr />
       <div className="container_staffsInfo">
         {STAFFS &&

@@ -24,3 +24,8 @@
 .item_staffsInfo img{
   width: 100%;
 }
+
+.functions {
+  display: flex;
+  justify-content: space-around;
+}

@@ -1,0 +1,19 @@
+.background_ShowForm{
+    background-color: rgba(82, 82, 82, 0.342);
+    margin : 0px;
+    padding : 0;
+    height : 100%;
+}
+
+.container_ShowForm {
+    background-color: beige;
+    display : flex;
+    justify-items : center;
+    align-items : center;
+
+}
+
+.nav_Form{
+    display: flex;
+    justify-content: space-between;
+}
