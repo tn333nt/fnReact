@@ -1,6 +1,7 @@
 
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import {searchStaff} from "../../../../../redux/actions"
 
 
 export default function SearchStaffs() {
@@ -12,9 +13,13 @@ export default function SearchStaffs() {
     const handleSearchText = (e) => {
         const value = e.target.value.toLowerCase()
         setSearchText(value)
-
-        dispatch()
     } 
+
+    const handleSearch = () => {
+        dispatch(searchStaff({
+
+        }))
+    }
 
     return (
         <div className="container_SearchStaffs">
@@ -24,7 +29,9 @@ export default function SearchStaffs() {
                 placeholder="search..."
                 onChange={handleSearchText}
             />
-            <button> Search </button>
+            <button
+            onClick={handleSearch}
+            > Search </button>
         </div>
     )
 }

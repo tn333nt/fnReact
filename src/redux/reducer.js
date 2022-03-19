@@ -5,26 +5,13 @@ const initialState = {
     filter: {
         search: '',
     },
-    // 
-    staffList: [
-        <div className="container_staffList">
-            {STAFFS.map(staff => (
-                <div
-                    key={staff.id}
-                    className="staff_staffList"
-                >
-                    <img src={staff.image} alt="" />
-                    <p>{staff.name}</p>
-                </div>
-            ))}
-        </div>
-    ]
+    staffList: STAFFS
 }
 
 
 export default function rootReducer(state = initialState, action) {
     switch (action.type) {
-        case 'render/addStaff': {
+        case 'ADD_STAFF': {
             return {
                 ...state,
                 staffList: [
@@ -33,12 +20,14 @@ export default function rootReducer(state = initialState, action) {
                 ]
             }
         }
-        case 'saerchStaff': {
+        case 'SEARCH_STAFF': {
+            const RenderAfterSearch = state.staffList.filter(staff => 
+                staff.filter.search ? staff.name.toLowerCase().includes(staff.filter.search) : state) 
             return {
                 ...state,
                 filter: [
                     ...state.filter,
-                    action.payload
+                    action.payload: RenderAfterSearch,
                 ]
             }
         }

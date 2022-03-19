@@ -1,14 +1,14 @@
 
 export const addStaff = (data) => {
     return {
-        type: "render/addStaff",
+        type: "ADD_STAFF",
         payload: data
     }
 }
 
 export const searchStaff = (text) => {
     return {
-        type: "filter/searchStaff",
+        type: "SEARCH_STAFF",
         payload: text
     }
 }
