@@ -1,37 +1,33 @@
-
-import { useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import {searchStaff} from "../../../../../redux/actions"
-
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { searchStaff } from "../../../../../redux/actions";
 
 export default function SearchStaffs() {
+  const [searchText, setSearchText] = useState("");
 
-    const [searchText, setSearchText] = useState('')
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
+  const handleSearchText = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearchText(value);
+  };
 
-    const handleSearchText = (e) => {
-        const value = e.target.value.toLowerCase()
-        setSearchText(value)
-    } 
+  const handleSearch = () => {
+    dispatch({
+      type: "SEARCH_STAFF",
+      payload: searchText,
+    });
+  };
 
-    const handleSearch = () => {
-        dispatch(searchStaff({
-
-        }))
-    }
-
-    return (
-        <div className="container_SearchStaffs">
-            <input
-                type="text"
-                value={searchText}
-                placeholder="search..."
-                onChange={handleSearchText}
-            />
-            <button
-            onClick={handleSearch}
-            > Search </button>
-        </div>
-    )
+  return (
+    <div className="container_SearchStaffs">
+      <input
+        type="text"
+        value={searchText}
+        placeholder="search..."
+        onChange={handleSearchText}
+      />
+      <button onClick={handleSearch}> Search </button>
+    </div>
+  );
 }

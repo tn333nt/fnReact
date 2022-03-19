@@ -42,7 +42,6 @@ export default function Footer() {
             <FaEnvelopeSquare />
           </span>
         </div>
-
       </div>
 
       <div className="copyright">
@@ -51,4 +50,3 @@ export default function Footer() {
     </footer>
   );
 }
-

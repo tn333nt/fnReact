@@ -1,28 +1,27 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react"
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./ShowStaffList.css";
 import AddStaff from "./features/add/AddStaff.js";
 import ShowForm from "./features/add/ShowForm.js";
 import SearchStaffs from "./features/search/SearchStaffs";
+import { connect } from "react-redux";
 
-export default function ShowStaffList() {
+function ShowStaffList() {
   const navigate = useNavigate();
 
-  const state = useSelector(state => state)
+  const state = useSelector((state) => state);
 
-  const STAFFS = state.staffList
+  const STAFFS = state.staffList;
 
-  const [formState, setFormState] = useState(false)
+  const [formState, setFormState] = useState(false);
 
   const handleAddStaff = () => {
-    setFormState(true)
-  }
-
+    setFormState(true);
+  };
 
   return (
     <>
-     {console.log(STAFFS)}
       <div className="functions">
         <ShowForm handleAddStaff={handleAddStaff} />
         {formState && <AddStaff />}
@@ -45,3 +44,12 @@ export default function ShowStaffList() {
     </>
   );
 }
+function mapStateToProps(state) {
+  return {
+    staffList: state.staffList,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ShowStaffList);
