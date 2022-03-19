@@ -1,5 +1,5 @@
 
-export const addStafd = (data) => {
+export const addStaff = (data) => {
     return {
         type: "render/addStaff",
         payload: data
