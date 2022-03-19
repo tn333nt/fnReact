@@ -1,10 +1,10 @@
 import "./AddStaff.css"
 import { useState } from "react"
-import ShowForm from "./ShowForm/ShowForm.js"
+// import AddStaff from "./AddStaff.js"
 
-export default function AddStaff(){
+export default function ShowForm(){
 
-    const [formState , setFormState] = useState()
+    let [formState , setFormState] = useState('')
 
     formState = null
 
@@ -13,13 +13,14 @@ export default function AddStaff(){
     }
 
     // cai nay lai can dat o ShowStaffList
-    // {formState && <ShowForm />} //maybe
+    // {formState && <AddStaff />} //maybe
 
     return (
         <>
             <button
                 className="btn_AddStaff"
                 onClick={handleAddStaff}
+                style={{ padding : 15 , backgroundColor : "gray"}}
             > + </button>
         </>
     )

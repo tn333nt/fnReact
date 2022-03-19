@@ -5,6 +5,7 @@ const initialState = {
     filter: {
         search: '',
     },
+    // 
     staffList: [
         <div className="container_staffList">
             {STAFFS.map(staff => (

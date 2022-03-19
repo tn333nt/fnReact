@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { STAFFS } from "../../../staffs.js";
 import "./ShowStaffList.css";
-import AddStaff from "../functions/add/AddStaff.js";
+import ShowForm from "../functions/add/ShowForm.js";
 import SearchStaffs from "../functions/search/SearchStaffs.js";
 
 export default function ShowStaffList() {
@@ -10,7 +10,7 @@ export default function ShowStaffList() {
   return (
     <>
       <div className="functions">
-        <AddStaff />
+        <ShowForm />
         <SearchStaffs />
       </div>
       <h1>Nhân viên</h1> <hr />

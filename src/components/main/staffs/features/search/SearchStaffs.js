@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
+
 export default function SearchStaffs() {
 
     const [searchText, setSearchText] = useState('')
@@ -13,17 +14,17 @@ export default function SearchStaffs() {
         setSearchText(value)
 
         dispatch()
-    }
+    } 
 
     return (
-        <>
-            <input 
-            type="text"
-            value={searchText}
-            onChange={handleSearchText}
+        <div className="container_SearchStaffs">
+            <input
+                type="text"
+                value={searchText}
+                placeholder="search..."
+                onChange={handleSearchText}
             />
-
-            <button> search </button>
-        </>
+            <button> Search </button>
+        </div>
     )
 }
