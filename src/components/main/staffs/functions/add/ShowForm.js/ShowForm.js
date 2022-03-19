@@ -7,15 +7,6 @@ export default function ShowForm() {
 
     const handleSubmit = () => {
 
-        // const [infos , setInfos] = useState()
-        // const [info , setInfo] = useState()
-
-        // ke ca bay h gan dc infos vs data get tu localStorage thi cung
-        // lien ket func rendẻr qua trang khac kieu gi nhi
-
-        // neu truyen qua props thi
-        // nhap may cai kia ntn nhi
-        // qtr la cno dau co cung page hay 1 section xu ly ...?
     }
 
     return (
