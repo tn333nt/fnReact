@@ -1,16 +1,20 @@
 .background_ShowForm{
     background-color: rgba(129, 129, 129, 0.349);
     position: absolute;
-    margin: 0;
-    padding:0;
+    top:0;
     height: 100%;
+    width: 100%;
 }
 
 .container_ShowForm{
     background-color: aliceblue;
     position: absolute;
-    padding : 30px 90px;
-    row-gap: 15px;
+    padding : 30px 40px;
+    line-height: 21px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+
 }
 
 .nav_Form button{
@@ -25,12 +29,12 @@
 .item_Form{
     display: flex;
     justify-content: space-between;
-    row-gap: 15px;
+    margin-bottom: 21px;
 }
 
 .btn_ShowForm{
-    display: flex;
-    justify-content: center;
+    position: relative;
+    left: 45%;
 }
 
 

@@ -1,34 +1,34 @@
 
 import { useState } from "react"
-import { useParams } from "react-router-dom"
 import { STAFFS } from "../../../../../staffs.js"
 import { useSelector, useDispatch } from "react-redux"
-import StaffListSelector from "../../../../../redux/selector"
-import { addStaff } from "../../../../../redux/actions.js"
 import "./AddStaff.css"
 
-export default function AddStaff() {
+export default function AddStaff(props) {
 
-  const [staff, setStaff] = useState()
-  const HandleInputChange = (e) => {
-    setStaff(e.target.value)
-  }
+  
+
+  const [name, setName] = useState()
+  const [doB, setdoB] = useState()
+  const [salaryScale, setSalaryScale] = useState()
+  const [startDate, setStartDate] = useState()
+  const [department, setDepartment] = useState()
+  const [annualLeave, setAnnualLeave] = useState()
+  const [overTime, setOverTime] = useState()
+
 
   const dispatch = useDispatch()
-  const { staffId } = useParams();
 
-  const info = STAFFS.find((staff) => staff.id === +staffId);
 
   const handleAddStaff = () => {
-    dispatch(addStaff({
-      name: info.name,
-      doB: info.doB,
-      salaryScale: info.salaryScale,
-      startDate: info.startDate,
-      department: info.department,
-      annualLeave: info.annualLeave,
-      overTime: info.overTime,
-      salary: info.salary,
+    dispatch(AddStaff({
+      name: name,
+      doB: doB,
+      salaryScale: salaryScale,
+      startDate: startDate,
+      department: department,
+      annualLeave: annualLeave,
+      overTime: overTime,
       image: '/assets/images/alberto.png',
     }))
   }
@@ -39,7 +39,7 @@ export default function AddStaff() {
         <div className="nav_Form">
           <h2>
             {" "}Thêm nhân viên{" "}
-            <span><button>X</button></span>
+            <span><button onClick={props.handleHideForm}>X</button></span>
           </h2>
           <hr />
         </div>
@@ -47,8 +47,8 @@ export default function AddStaff() {
           <div className="item_Form">
             <label htmlFor="name">Tên</label>
             <input
-              value={staff}
-              onChange={HandleInputChange}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               id="name"
               type="text"
             />
@@ -59,27 +59,28 @@ export default function AddStaff() {
           <div className="item_Form">
             <label htmlFor="doB">Ngày sinh</label>
             <input
-              value={staff}
-              onChange={HandleInputChange}
+              value={doB}
+              onChange={(e) => setdoB(e.target.value)}
               id="doB"
-              type="text"
+              type="date"
             />
           </div>
 
           <div className="item_Form">
             <label htmlFor="startDate">Ngày vào công ty</label>
             <input
-              value={staff}
-              onChange={HandleInputChange}
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
               id="startDate"
-              type="text"
+              type="date"
             />
           </div>
 
           <div className="item_Form">
             <label htmlFor="department">Phòng ban </label>
             <select
-              onChange={HandleInputChange}
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
               name=""
               id="department"
             >
@@ -93,7 +94,8 @@ export default function AddStaff() {
           <div className="item_Form">
             <label htmlFor="salaryScale">Hệ số lương</label>
             <input
-              onChange={HandleInputChange}
+              value={salaryScale}
+              onChange={(e) => setSalaryScale(e.target.value)}
               id="salaryScale"
               type="number"
             />
@@ -102,7 +104,8 @@ export default function AddStaff() {
           <div className="item_Form">
             <label htmlFor="annualLeave">Số ngày nghỉ còn lại</label>
             <input
-              onChange={HandleInputChange}
+              value={annualLeave}
+              onChange={(e) => setAnnualLeave(e.target.value)}
               id="annualLeave"
               type="number"
             />
@@ -111,7 +114,8 @@ export default function AddStaff() {
           <div className="item_Form">
             <label htmlFor="overTime">Số ngày đã làm thêm</label>
             <input
-              onChange={HandleInputChange}
+              value={overTime}
+              onChange={(e) => setOverTime(e.target.value)}
               id="overTime"
               type="number"
             />

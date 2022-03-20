@@ -6,7 +6,6 @@ export const addStaff = (data) => {
 };
 
 export const searchStaff = (text) => {
-  debugger;
   return {
     type: "SEARCH_STAFF",
     payload: text,

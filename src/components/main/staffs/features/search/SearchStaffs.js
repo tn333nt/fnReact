@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { searchStaff } from "../../../../../redux/actions";
+import { useDispatch } from "react-redux";
 
 export default function SearchStaffs() {
   const [searchText, setSearchText] = useState("");

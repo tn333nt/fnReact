@@ -5,14 +5,11 @@ import "./ShowStaffList.css";
 import AddStaff from "./features/add/AddStaff.js";
 import ShowForm from "./features/add/ShowForm.js";
 import SearchStaffs from "./features/search/SearchStaffs";
-import { connect } from "react-redux";
 
-function ShowStaffList() {
+export default function ShowStaffList() {
   const navigate = useNavigate();
 
-  const state = useSelector((state) => state);
-
-  const STAFFS = state.staffList;
+  const STAFFS = useSelector(state => state.staffList);
 
   const [formState, setFormState] = useState(false);
 
@@ -20,11 +17,15 @@ function ShowStaffList() {
     setFormState(true);
   };
 
+  const handleHideForm = () => {
+    setFormState(false)
+  }
+
   return (
     <>
       <div className="functions">
         <ShowForm handleAddStaff={handleAddStaff} />
-        {formState && <AddStaff />}
+        {formState && <AddStaff handleHideForm={handleHideForm}/>}
         <SearchStaffs />
       </div>
       <h1>Nhân viên</h1> <hr />
@@ -44,12 +45,4 @@ function ShowStaffList() {
     </>
   );
 }
-function mapStateToProps(state) {
-  return {
-    staffList: state.staffList,
-  };
-}
-function mapDispatchToProps(dispatch) {
-  return {};
-}
-export default connect(mapStateToProps, mapDispatchToProps)(ShowStaffList);
+

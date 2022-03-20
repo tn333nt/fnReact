@@ -7,7 +7,7 @@ export default function ShowForm(props) {
             <button
                 className="btn_AddStaff"
                 onClick={props.handleAddStaff}
-                style={{ padding: 15, backgroundColor: `#ccc` }}
+                style={{ padding: '10px 25px', backgroundColor: `#ccc` }}
             > + </button>
         </>
     )
