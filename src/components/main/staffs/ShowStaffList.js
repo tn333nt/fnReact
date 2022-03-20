@@ -25,7 +25,7 @@ export default function ShowStaffList() {
     <>
       <div className="functions">
         <ShowForm handleAddStaff={handleAddStaff} />
-        {formState && <AddStaff handleHideForm={handleHideForm}/>}
+        {formState && <AddStaff handleHideForm={handleHideForm} />}
         <SearchStaffs />
       </div>
       <h1>Nhân viên</h1> <hr />
@@ -35,7 +35,9 @@ export default function ShowStaffList() {
             <div
               key={item.id}
               className="item_staffList"
-              onClick={() => navigate(`/staffs/${item.id}`)}
+              onClick={() => {
+                navigate(`/staffs/${item.id}`)
+              }}
             >
               <img src={item.image} alt="" />
               <p>{item.name}</p>

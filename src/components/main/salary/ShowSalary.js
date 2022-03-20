@@ -19,7 +19,7 @@ export default function ShowSalary() {
     <>
       <div className="nav_staffDetails">
         <div >
-          <span onClick={() => navigate(-1)} className="goBack">Nhân viên</span>
+          <span onClick={() => {navigate(-1)}} className="goBack">Nhân viên</span>
           <span>/ Bảng lương </span>
         </div>
       </div>

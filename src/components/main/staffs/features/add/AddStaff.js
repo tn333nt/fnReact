@@ -1,37 +1,63 @@
 
 import { useState } from "react"
-import { STAFFS } from "../../../../../staffs.js"
-import { useSelector, useDispatch } from "react-redux"
+import {  useDispatch } from "react-redux"
 import "./AddStaff.css"
+
+const initialValues = {
+  name: "",
+  doB: "",
+  salaryScale: "",
+  startDate: "",
+  department: "",
+  annualLeave: "",
+  overTime: "",
+  image: '/assets/images/alberto.png',
+}
+
 
 export default function AddStaff(props) {
 
-  
 
-  const [name, setName] = useState()
-  const [doB, setdoB] = useState()
-  const [salaryScale, setSalaryScale] = useState()
-  const [startDate, setStartDate] = useState()
-  const [department, setDepartment] = useState()
-  const [annualLeave, setAnnualLeave] = useState()
-  const [overTime, setOverTime] = useState()
+  const [values, setValues] = useState(initialValues)
+  const [validate, setValidate] = useState(null)
 
+  const handleInputChange = (e) => {
+
+    // problem 1
+    if (!values) {
+      setValidate("Yêu cầu nhập")
+    } else {
+      setValues({
+        ...values,
+        [e.target.name]: e.target.value
+      })
+    }
+
+  }
 
   const dispatch = useDispatch()
 
 
-  const handleAddStaff = () => {
-    dispatch(AddStaff({
-      name: name,
-      doB: doB,
-      salaryScale: salaryScale,
-      startDate: startDate,
-      department: department,
-      annualLeave: annualLeave,
-      overTime: overTime,
-      image: '/assets/images/alberto.png',
-    }))
+  const handleAddStaff = (e) => {
+    
+    dispatch({
+      type: "ADD_STAFF",
+      payload: {
+        name: values.name,
+        doB: values.doB,
+        salaryScale: values.salaryScale,
+        startDate: values.startDate,
+        department: values.department, //  problem 2
+        annualLeave: values.annualLeave,
+        overTime: values.overTime,
+        image: '/assets/images/alberto.png',
+      },
+    })
+
+    localStorage.setItem("staff", values)
+    props.handleHideForm();
   }
+
 
   return (
     <div className="background_ShowForm">
@@ -47,11 +73,13 @@ export default function AddStaff(props) {
           <div className="item_Form">
             <label htmlFor="name">Tên</label>
             <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              name="name"
+              value={values.name}
+              onChange={handleInputChange}
               id="name"
               type="text"
             />
+            <p> {validate} </p>
           </div>
 
           <div className="item_Form">
@@ -59,29 +87,35 @@ export default function AddStaff(props) {
           <div className="item_Form">
             <label htmlFor="doB">Ngày sinh</label>
             <input
-              value={doB}
-              onChange={(e) => setdoB(e.target.value)}
+              name="doB"
+              value={values.doB}
+              onChange={handleInputChange}
               id="doB"
               type="date"
             />
           </div>
+          <p> {validate} </p>
+
 
           <div className="item_Form">
             <label htmlFor="startDate">Ngày vào công ty</label>
             <input
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
+              name="startDate"
+              value={values.startDate}
+              onChange={handleInputChange}
               id="startDate"
               type="date"
             />
           </div>
+          <p> {validate} </p>
+
 
           <div className="item_Form">
             <label htmlFor="department">Phòng ban </label>
             <select
-              value={department}
-              onChange={(e) => setDepartment(e.target.value)}
-              name=""
+              name="department"
+              value={values.department}
+              onChange={handleInputChange}
               id="department"
             >
               <option value="sale">sale</option>
@@ -94,8 +128,9 @@ export default function AddStaff(props) {
           <div className="item_Form">
             <label htmlFor="salaryScale">Hệ số lương</label>
             <input
-              value={salaryScale}
-              onChange={(e) => setSalaryScale(e.target.value)}
+              name="salaryScale"
+              value={values.salaryScale}
+              onChange={handleInputChange}
               id="salaryScale"
               type="number"
             />
@@ -104,8 +139,9 @@ export default function AddStaff(props) {
           <div className="item_Form">
             <label htmlFor="annualLeave">Số ngày nghỉ còn lại</label>
             <input
-              value={annualLeave}
-              onChange={(e) => setAnnualLeave(e.target.value)}
+              name="annualLeave"
+              value={values.annualLeave}
+              onChange={handleInputChange}
               id="annualLeave"
               type="number"
             />
@@ -114,8 +150,9 @@ export default function AddStaff(props) {
           <div className="item_Form">
             <label htmlFor="overTime">Số ngày đã làm thêm</label>
             <input
-              value={overTime}
-              onChange={(e) => setOverTime(e.target.value)}
+              name="overTime"
+              value={values.overTime}
+              onChange={handleInputChange}
               id="overTime"
               type="number"
             />

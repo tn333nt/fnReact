@@ -10,6 +10,7 @@ const initialState = {
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_STAFF": {
+      action.payload.id = state.staffList.length + 1;
       return {
         ...state,
         staffList: [...state.staffList, action.payload],

@@ -1,20 +1,22 @@
 import { useNavigate, useParams } from "react-router-dom";
 import dateFormat from "dateformat";
+import { useSelector } from "react-redux";
 import "./ShowStaff.css";
-import { STAFFS } from "../../../../staffs.js";
 
 export default function ShowStaff() {
   const navigate = useNavigate();
 
   const { staffId } = useParams();
 
-  const staff = STAFFS.find((staff) => staff.id === +staffId);
+  const staffList = useSelector(state => state.staffList)
+
+  const staff = staffList.find((staff) => staff.id === +staffId);
 
   return (
     <div className="container_staff">
       <div className="nav_staff">
         <div>
-          <span  onClick={() => navigate(-1)} className="goBack">Nhân viên</span>
+          <span onClick={() => navigate(-1)} className="goBack">Nhân viên</span>
           <span>/ {staff.name} </span>
         </div>
       </div>
