@@ -4,11 +4,12 @@ const initialState = {
   filter: {
     search: "",
   },
-  staffList: STAFFS,
+  staffList: !localStorage.getItem("staffList") ? STAFFS : JSON.parse(localStorage.getItem("staffList")),
 };
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
+    //
     case "ADD_STAFF": {
       action.payload.id = state.staffList.length + 1;
       return {
@@ -16,6 +17,7 @@ export default function rootReducer(state = initialState, action) {
         staffList: [...state.staffList, action.payload],
       };
     }
+    //
     case "SEARCH_STAFF": {
       const data = STAFFS.filter((staff) =>
         staff.name.toLowerCase().includes(action.payload.toLowerCase())
@@ -28,6 +30,7 @@ export default function rootReducer(state = initialState, action) {
         staffList: data,
       };
     }
+    //
     default:
       return state;
   }

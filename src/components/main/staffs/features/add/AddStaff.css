@@ -37,6 +37,11 @@
     left: 45%;
 }
 
+.validate {
+    margin: 0;
+    color: red;
+    text-align: center;
+}
 
 
 

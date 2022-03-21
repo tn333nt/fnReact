@@ -1,20 +1,15 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
 export default function SearchStaffs() {
-  const [searchText, setSearchText] = useState("");
+
+  const inputRef = useRef()
 
   const dispatch = useDispatch();
-
-  const handleSearchText = (e) => {
-    const value = e.target.value.toLowerCase();
-    setSearchText(value);
-  };
-
   const handleSearch = () => {
     dispatch({
       type: "SEARCH_STAFF",
-      payload: searchText,
+      payload: inputRef.current.value,
     });
   };
 
@@ -22,9 +17,9 @@ export default function SearchStaffs() {
     <div className="container_SearchStaffs">
       <input
         type="text"
-        value={searchText}
+        ref={inputRef}
         placeholder="search..."
-        onChange={handleSearchText}
+        required
       />
       <button onClick={handleSearch}> Search </button>
     </div>

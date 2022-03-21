@@ -1,6 +1,6 @@
 
-import { useState } from "react"
-import {  useDispatch } from "react-redux"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import "./AddStaff.css"
 
 const initialValues = {
@@ -17,46 +17,75 @@ const initialValues = {
 
 export default function AddStaff(props) {
 
-
   const [values, setValues] = useState(initialValues)
-  const [validate, setValidate] = useState(null)
+  const [validateName, setValidateName] = useState(null)
+  const [validatedoB, setValidatedoB] = useState(null)
+  const [validateStartDate, setValidateStartDate] = useState(null)
 
   const handleInputChange = (e) => {
 
-    // problem 1
-    if (!values) {
-      setValidate("Yêu cầu nhập")
-    } else {
-      setValues({
-        ...values,
-        [e.target.name]: e.target.value
-      })
-    }
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value
+    })
 
+    if (values.name.length < 2) {
+      setValidateName("Yêu cầu nhập ít nhất 2 ký tự")
+      return;
+    } else if (values.name.length >= 30) {
+      setValidateName("Yêu cầu nhập ít hơn 30 ký tự")
+      return;
+    } else {
+      setValidateName("")
+      return;
+    }
+    
   }
+
+
+  const [option, setOption] = useState("sale")
+
+  const handleOptionChange = (e) => {
+    setOption(e.target.value)
+  }
+
 
   const dispatch = useDispatch()
 
+  const staffList = useSelector(state => state.staffList)
+  console.log(staffList)
 
   const handleAddStaff = (e) => {
-    
-    dispatch({
-      type: "ADD_STAFF",
-      payload: {
+
+    if (!values.name || !values.doB || !values.salaryScale) {
+      setValidateName("Yêu cầu nhập")
+      setValidatedoB("Yêu cầu nhập")
+      setValidateStartDate("Yêu cầu nhập")
+      setValues("")
+      return;
+    } else {
+      const request = {
         name: values.name,
         doB: values.doB,
         salaryScale: values.salaryScale,
         startDate: values.startDate,
-        department: values.department, //  problem 2
+        department: option, 
         annualLeave: values.annualLeave,
         overTime: values.overTime,
         image: '/assets/images/alberto.png',
-      },
-    })
+      }
+      dispatch({
+        type: "ADD_STAFF",
+        payload: request
+      })
+    }
 
-    localStorage.setItem("staff", values)
+    localStorage.setItem("staffList", JSON.stringify(staffList))
+
+    console.log(staffList)
     props.handleHideForm();
   }
+
 
 
   return (
@@ -79,8 +108,8 @@ export default function AddStaff(props) {
               id="name"
               type="text"
             />
-            <p> {validate} </p>
           </div>
+          <p className="validate"> {validateName} </p>
 
           <div className="item_Form">
           </div>
@@ -94,7 +123,7 @@ export default function AddStaff(props) {
               type="date"
             />
           </div>
-          <p> {validate} </p>
+          <p className="validate"> {validatedoB} </p>
 
 
           <div className="item_Form">
@@ -107,15 +136,15 @@ export default function AddStaff(props) {
               type="date"
             />
           </div>
-          <p> {validate} </p>
+          <p className="validate"> {validateStartDate} </p>
 
 
           <div className="item_Form">
             <label htmlFor="department">Phòng ban </label>
             <select
               name="department"
-              value={values.department}
-              onChange={handleInputChange}
+              value={option}
+              onChange={handleOptionChange}
               id="department"
             >
               <option value="sale">sale</option>
@@ -133,6 +162,7 @@ export default function AddStaff(props) {
               onChange={handleInputChange}
               id="salaryScale"
               type="number"
+              placeholder="1.0->3.0"
             />
           </div>
 
@@ -144,6 +174,7 @@ export default function AddStaff(props) {
               onChange={handleInputChange}
               id="annualLeave"
               type="number"
+              placeholder="0"
             />
           </div>
 
@@ -155,6 +186,7 @@ export default function AddStaff(props) {
               onChange={handleInputChange}
               id="overTime"
               type="number"
+              placeholder="0"
             />
           </div>
 

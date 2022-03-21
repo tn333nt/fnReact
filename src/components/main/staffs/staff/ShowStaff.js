@@ -31,7 +31,7 @@ export default function ShowStaff() {
           <li>
             Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}
           </li>
-          <li>Phòng ban : {staff.department.name}</li>
+          <li>Phòng ban : {staff.department}</li>
           <li>Số ngày nghỉ còn lại : {staff.annualLeave}</li>
           <li>Số ngày đã làm thêm : {staff.overTime}</li>
         </ul>
