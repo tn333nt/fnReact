@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import "./ShowStaffList.css";
 import AddStaff from "./features/add/AddStaff.js";
 import ShowForm from "./features/add/ShowForm.js";
