@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import "./ShowStaffList.css";
-import AddStaff from "./features/add/AddStaff.js";
-import ShowForm from "./features/add/ShowForm.js";
-import SearchStaffs from "./features/search/SearchStaffs";
+import AddStaff from "../features/add/AddStaff.js";
+import ShowForm from "../features/add/ShowForm.js";
+import SearchStaffs from "../features/search/SearchStaffs";
 
 export default function ShowStaffList() {
   const navigate = useNavigate();

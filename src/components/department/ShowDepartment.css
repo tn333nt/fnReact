@@ -1,0 +1,13 @@
+
+.container_department {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    grid-gap: 5px;
+    margin: 1.5rem;
+  }
+  
+  .item_department {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+  }

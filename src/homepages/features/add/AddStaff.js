@@ -1,6 +1,7 @@
 
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { addStaff } from "../../../redux/action"
 import "./AddStaff.css"
 
 const initialValues = {
@@ -73,10 +74,7 @@ export default function AddStaff(props) {
         overTime: values.overTime,
         image: '/assets/images/alberto.png',
       }
-      dispatch({
-        type: "ADD_STAFF",
-        payload: request
-      })
+      dispatch(addStaff(request))
       localStorage.setItem("staffList", JSON.stringify([...staffList, request]))
     }
 

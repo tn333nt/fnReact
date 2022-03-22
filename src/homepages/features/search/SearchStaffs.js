@@ -1,15 +1,13 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
+import { searchStaffs } from "../../../redux/action";
 
 export default function SearchStaffs() {
   const inputRef = useRef()
 
   const dispatch = useDispatch();
   const handleSearch = () => {
-    dispatch({
-      type: "SEARCH_STAFF",
-      payload: inputRef.current.value,
-    });
+    dispatch(searchStaffs(inputRef.current.value));
   };
 
   return (

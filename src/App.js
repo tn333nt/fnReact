@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import NavBar from "./components/header/NavBar.js";
-import ShowStaffList from "./components/main/staffs/ShowStaffList.js";
-import ShowStaff from "./components/main/staffs/staff/ShowStaff.js";
-import ShowDepartment from "./components/main/department/ShowDepartment.js";
-import ShowSalary from "./components/main/salary/ShowSalary.js";
-import Footer from "./components/footer/footer";
+import NavBar from "./ui/header/NavBar.js";
+import ShowStaffList from "./homepages/staffs/ShowStaffList.js";
+import ShowStaff from "./homepages/staff/ShowStaff.js";
+import ShowSalary from "./components/salary/ShowSalary.js";
+import ShowDepartment from "./components/department/ShowDepartment.js";
+import Footer from "./ui/footer/footer";
 
 function App() {
   return (

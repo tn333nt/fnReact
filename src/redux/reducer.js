@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import { STAFFS } from "../staffs";
+import { addStaff } from "./action";
 
 const initialState = {
   filter: {
@@ -26,6 +28,11 @@ export default function rootReducer(state = initialState, action) {
         },
         staffList: data,
       };
+    }
+    case "FETCH_DATA": {
+      return fetch("https://rjs101xbackend.herokuapp.com/")
+      .then(res => res.json())
+      .then(data => useDispatch(addStaff(data)))
     }
     default:
       return state;
