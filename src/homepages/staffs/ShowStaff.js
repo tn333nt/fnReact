@@ -1,16 +1,22 @@
 import { useNavigate, useParams } from "react-router-dom";
 import dateFormat from "dateformat";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./ShowStaff.css";
+import { useEffect } from "react";
+import { fetchStaffs } from "../../redux/action";
 
 export default function ShowStaff() {
   const navigate = useNavigate();
 
   const { staffId } = useParams();
 
-  const staffList = useSelector(state => state.staffList)
+  const staffList = useSelector(state => state.fetchData.data)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchStaffs()); 
+  },[dispatch])
 
-  const staff = staffList.find((staff) => staff.id === +staffId);
+  const staff = staffList.find(staff => staff.id === +staffId);
 
   return (
     <div className="container_staff">
@@ -29,7 +35,7 @@ export default function ShowStaff() {
           <li>
             Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}
           </li>
-          <li>Phòng ban : {staff.department.name || staff.department}</li>
+          <li>Phòng ban : {staff.departmentId.name || staff.departmentId}</li> {/* lailano=))) */}
           <li>Số ngày nghỉ còn lại : {staff.annualLeave}</li>
           <li>Số ngày đã làm thêm : {staff.overTime}</li>
         </ul>

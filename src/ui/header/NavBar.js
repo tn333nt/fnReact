@@ -15,7 +15,7 @@ export default function NavBar() {
           </Link>
         </li>
         <li>
-          <Link to="/ShowDepartment">
+          <Link to="/ShowDepartments">
             <span>
               <FaRegIdCard />
             </span>

@@ -1,10 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchSalary } from "../../redux/action";
 import "./ShowSalary.css";
-import { STAFFS } from "../../staffs.js";
 
 export default function ShowSalary() {
 
   const navigate = useNavigate();
+
+  const STAFFS = useSelector(state => state.fetchData.data)
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchSalary())
+  },[dispatch])
 
   const calculateSalary = (item) => {
     const salaryScale = item.salaryScale;

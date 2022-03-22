@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./ui/header/NavBar.js";
 import ShowStaffList from "./homepages/staffs/ShowStaffList.js";
-import ShowStaff from "./homepages/staff/ShowStaff.js";
+import ShowStaff from "./homepages/staffs/ShowStaff.js";
 import ShowSalary from "./components/salary/ShowSalary.js";
-import ShowDepartment from "./components/department/ShowDepartment.js";
+import ShowDepartments from "./components/department/ShowDepartments.js";
+import Department from "./components/department/Department.js";
 import Footer from "./ui/footer/footer";
 
 function App() {
@@ -15,7 +16,10 @@ function App() {
           <Route path="/" element={<ShowStaffList />} />
           <Route path={"/staffs/:staffId"} element={<ShowStaff />} />
         </Route>
-        <Route path="/ShowDepartment" element={<ShowDepartment />} />
+        <Route>
+          <Route path="/ShowDepartments" element={<ShowDepartments />} />
+          <Route path="/ShowDepartments/:id" element={<Department />} />
+        </Route>
         <Route path="/ShowSalary" element={<ShowSalary />} />
       </Routes>
       <Footer />
