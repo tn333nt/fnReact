@@ -9,17 +9,14 @@ const initialState = {
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
-    //
     case "ADD_STAFF": {
-      action.payload.id = state.staffList.length + 1;
       return {
         ...state,
         staffList: [...state.staffList, action.payload],
       };
     }
-    //
     case "SEARCH_STAFF": {
-      const data = STAFFS.filter((staff) =>
+      const data = state.staffList.filter((staff) =>
         staff.name.toLowerCase().includes(action.payload.toLowerCase())
       );
       return {
@@ -30,7 +27,6 @@ export default function rootReducer(state = initialState, action) {
         staffList: data,
       };
     }
-    //
     default:
       return state;
   }

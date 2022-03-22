@@ -12,13 +12,8 @@
   margin: 10px;
 }
 
-.item_staffList li {
-  list-style-type: none;
-  padding: 10px;
-}
-
-.item_staffList li:first-child {
-  font-size: 30px;
+.item_staffList p {
+  word-wrap: break-word;
 }
 
 .item_staffList img{

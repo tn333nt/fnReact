@@ -14,7 +14,6 @@ const initialValues = {
   image: '/assets/images/alberto.png',
 }
 
-
 export default function AddStaff(props) {
 
   const [values, setValues] = useState(initialValues)
@@ -39,7 +38,7 @@ export default function AddStaff(props) {
       setValidateName("")
       return;
     }
-    
+
   }
 
 
@@ -53,7 +52,6 @@ export default function AddStaff(props) {
   const dispatch = useDispatch()
 
   const staffList = useSelector(state => state.staffList)
-  console.log(staffList)
 
   const handleAddStaff = (e) => {
 
@@ -61,15 +59,16 @@ export default function AddStaff(props) {
       setValidateName("Yêu cầu nhập")
       setValidatedoB("Yêu cầu nhập")
       setValidateStartDate("Yêu cầu nhập")
-      setValues("")
+      setValues(initialValues)
       return;
     } else {
       const request = {
+        id: staffList.length,
         name: values.name,
         doB: values.doB,
         salaryScale: values.salaryScale,
         startDate: values.startDate,
-        department: option, 
+        department: option.name,
         annualLeave: values.annualLeave,
         overTime: values.overTime,
         image: '/assets/images/alberto.png',
@@ -78,12 +77,12 @@ export default function AddStaff(props) {
         type: "ADD_STAFF",
         payload: request
       })
+      localStorage.setItem("staffList", JSON.stringify([...staffList, request]))
     }
 
-    localStorage.setItem("staffList", JSON.stringify(staffList))
-
-    console.log(staffList)
     props.handleHideForm();
+    
+
   }
 
 

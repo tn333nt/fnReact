@@ -25,13 +25,11 @@ export default function ShowStaff() {
         <img src={staff.image} alt="" />
         <ul>
           <li>Họ và tên : {staff.name}</li>
-          <li>Ngày sinh : {staff.doB}</li>
-          <li>Ngày vào công ty : {staff.startDate}</li>
           <li>Ngày sinh : {dateFormat(staff.doB, "dd/mm/yyyy")}</li>
           <li>
             Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}
           </li>
-          <li>Phòng ban : {staff.department}</li>
+          <li>Phòng ban : {staff.department.name || staff.department}</li>
           <li>Số ngày nghỉ còn lại : {staff.annualLeave}</li>
           <li>Số ngày đã làm thêm : {staff.overTime}</li>
         </ul>

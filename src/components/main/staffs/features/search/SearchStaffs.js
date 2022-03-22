@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
 export default function SearchStaffs() {
-  // test *n
   const inputRef = useRef()
 
   const dispatch = useDispatch();
