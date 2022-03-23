@@ -8,7 +8,7 @@ export default function ShowSalary() {
 
   const navigate = useNavigate();
 
-  const STAFFS = useSelector(state => state.fetchData.data)
+  const STAFFS = useSelector(state => state.salary)
 
   const dispatch = useDispatch()
   useEffect(() => {

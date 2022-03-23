@@ -1,7 +1,7 @@
 
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addStaff } from "../../../redux/action"
+import { addStaff, fetchNewStaff } from "../../../redux/action"
 import "./AddStaff.css"
 
 const initialValues = {
@@ -52,7 +52,7 @@ export default function AddStaff(props) {
 
   const dispatch = useDispatch()
 
-  const staffList = useSelector(state => state.staffList)
+  const staffs = useSelector(state => state.staffs)
 
   const handleAddStaff = (e) => {
 
@@ -64,7 +64,7 @@ export default function AddStaff(props) {
       return;
     } else {
       const request = {
-        id: staffList.length,
+        id: staffs.length,
         name: values.name,
         doB: values.doB,
         salaryScale: values.salaryScale,
@@ -74,15 +74,13 @@ export default function AddStaff(props) {
         overTime: values.overTime,
         image: '/assets/images/alberto.png',
       }
-      dispatch(addStaff(request))
-      localStorage.setItem("staffList", JSON.stringify([...staffList, request]))
+      dispatch(fetchNewStaff(request))
+      localStorage.setItem("staffs", JSON.stringify([...staffs, request]))
     }
 
     props.handleHideForm();
     
-
   }
-
 
 
   return (

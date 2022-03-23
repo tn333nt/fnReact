@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDepartments, updateDepartment } from "../../redux/action";
+import { fetchDepartments, setDepartment } from "../../redux/action";
 import { useNavigate } from "react-router-dom"
 import "./ShowDepartments.css";
 
@@ -13,6 +13,8 @@ export default function ShowDepartments() {
     dispatch(fetchDepartments())
   }, [dispatch])
 
+  console.log(departments)
+
   return (
     <div className="container_departments">
       {departments && departments.map(department => (
@@ -20,7 +22,7 @@ export default function ShowDepartments() {
           key={department.id}
           className="item_departments"
           onClick={() => {
-            dispatch(updateDepartment(department));
+            dispatch(setDepartment(department));
             navigate(`/ShowDepartments/${department.id}`)
           }}>
           <h2>{department.name}</h2>

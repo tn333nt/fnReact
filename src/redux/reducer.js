@@ -1,19 +1,14 @@
-import { STAFFS } from "../staffs";
 
 const initialState = {
   filter: {
     search: "",
   },
-  fetchData: {
-    data: [],
-    pending: false,
-    success: false,
-    error: false
-  },
-  staffList: !localStorage.getItem("staffList") ? STAFFS : JSON.parse(localStorage.getItem("staffList")),
-  department: undefined,
+  staffs: !localStorage.getItem("staffs") ? [] : JSON.parse(localStorage.getItem("staffs")),
+  staff: [],
+  department: [],
   departments: [],
-  departmentDetail: []
+  departmentDetail: [],
+  salary: []
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -21,11 +16,12 @@ export default function rootReducer(state = initialState, action) {
     case "ADD_STAFF": {
       return {
         ...state,
-        staffList: [...state.staffList, action.payload],
+        staffs: [...state.staffs, action.payload],
       };
     }
+
     case "SEARCH_STAFF": {
-      const data = state.staffList.filter((staff) =>
+      const data = state.staffs.filter((staff) =>
         staff.name.toLowerCase().includes(action.payload.toLowerCase())
       );
       return {
@@ -33,57 +29,53 @@ export default function rootReducer(state = initialState, action) {
         filter: {
           search: action.payload,
         },
-        staffList: data,
+        staffs: data,
       };
     }
+
     //
-    case "FETCH_DATA_PENDING": {
+    case "SET_STAFFS": {
       return {
         ...state,
-        fetchData: {
-          ...state.fetchData,
-          pending: true
-        }
-      }
+        staffs: action.payload
+      };
     }
-    case "FETCH_DATA_SUCCESS": {
+    
+    case "SET_STAFF": {
       return {
         ...state,
-        fetchData: {
-          ...state.fetchData,
-          data: action.payload,
-          success: true
-        }
-      }
+        staff: action.payload
+      };
     }
-    case "FETCH_DATA_ERROR": {
-      return {
-        ...state,
-        fetchData: {
-          ...state.fetchData,
-          error: true
-        }
-      }
-    }
-    //
-    case "UPDATE_DEPARTMENT": {
+    
+    case "SET_DEPARTMENT": {
       return {
         ...state,
         department: action.payload
       };
     }
+    
     case "SET_DEPARTMENTS": {
       return {
         ...state,
         departments: action.payload,
       }
     }
+    
     case "SET_DEPARTMENT_DETAIL": {
       return {
         ...state,
         departmentDetail: action.payload,
       }
     }
+    
+    case "SET_SALARY": {
+      return {
+        ...state,
+        salary: action.payload,
+      }
+    }
+    
     default:
       return state;
   }

@@ -5,19 +5,10 @@ import "./ShowStaffList.css";
 import AddStaff from "../features/add/AddStaff.js";
 import ShowForm from "../features/add/ShowForm.js";
 import SearchStaffs from "../features/search/SearchStaffs";
-import { fetchStaffs, setDepartments } from "../../redux/action";
+import { fetchStaffs, setDepartments, setStaff } from "../../redux/action";
 
 export default function ShowStaffList() {
   const navigate = useNavigate();
-
-
-  const STAFFS = useSelector(state => state.fetchData.data);
-
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchStaffs());
-  },[dispatch]) 
 
   const [formState, setFormState] = useState(false);
   const handleAddStaff = () => {
@@ -26,6 +17,10 @@ export default function ShowStaffList() {
   const handleHideForm = () => {
     setFormState(false)
   }
+  
+  const staffs = useSelector(state => state.staffs);
+
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -36,18 +31,20 @@ export default function ShowStaffList() {
       </div>
       <h1>Nhân viên</h1> <hr />
       <div className="container_staffList">
-        {STAFFS &&
-          STAFFS.map((item) => (
+        {staffs && staffs.map(staff => (
             <div
-              key={item.id}
+              key={staff.id}
               className="item_staffList"
               onClick={() => {
-                dispatch(setDepartments(item))
-                navigate(`/staffs/${item.id}`)
+                // not set staff
+                // still need department
+                // but how in here? =)
+                dispatch(setStaff(staff))
+                navigate(`/staffs/${staff.id}`)
               }}
             >
-              <img src={item.image} alt="" />
-              <p>{item.name}</p>
+              <img src={staff.image} alt="" />
+              <p>{staff.name}</p>
             </div>
           ))}
       </div>

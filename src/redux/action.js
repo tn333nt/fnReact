@@ -1,41 +1,35 @@
 
-export const addStaff = (staff) => {
+export function addStaff(staff) {
     return {
         type: "ADD_STAFF",
         payload: staff
     }
 }
 
-export const searchStaffs = (text) => {
+export function searchStaffs(text) {
     return {
         type: "SEARCH_STAFF",
         payload: text
     }
 }
-//
-export function fetchDataPending(data) {
+
+export function setStaffs(data) {
     return {
-        type: "FETCH_DATA_PENDING",
+        type: "SET_STAFFS",
         payload: data
     }
 }
 
-export function fetchDataSuccess(data) {
+export function setStaff(data) {
     return {
-        type: "FETCH_DATA_SUCCESS",
+        type: "SET_STAFF",
         payload: data
     }
 }
-export function fetchDataError(data) {
+
+export function setDepartment(data) {
     return {
-        type: "FETCH_DATA_ERROR",
-        payload: data
-    }
-}
-//
-export function updateDepartment(data) {
-    return {
-        type: "UPDATE_DEPARTMENT",
+        type: "SET_DEPARTMENT",
         payload: data
     }
 }
@@ -54,58 +48,84 @@ export function setDepartments(data) {
     }
 }
 
-//
+export function setSalary(data) {
+    return {
+        type: "SET_SALARY",
+        payload: data
+    }
+}
+
+
 export function fetchStaffs() {
     return dispatch => {
-        dispatch(fetchDataPending());
         fetch("https://rjs101xbackend.herokuapp.com/")
             .then(res => res.json())
             .then(data => {
-                dispatch(fetchDataSuccess(data))
-            })
-            .catch(err => {
-                dispatch(fetchDataError(err))
+                dispatch(setStaffs(data))
             })
     }
 }
+
 export function fetchDepartments() {
     return dispatch => {
-        dispatch(fetchDataPending());
         fetch("https://rjs101xbackend.herokuapp.com/departments")
             .then(res => res.json())
             .then(data => {
                 dispatch(setDepartments(data))
             })
-            .catch(err => {
-                dispatch(fetchDataError(err))
-            })
     }
 }
+
 export function fetchDepartment() {
     const id = window.location.pathname.split('/')[2];
     console.log(window.location)
     return dispatch => {
-        dispatch(fetchDataPending());
         fetch(`https://rjs101xbackend.herokuapp.com/departments/${id}`)
             .then(res => res.json())
             .then(data => {
                 dispatch(setDepartmentDetail(data))
             })
-            .catch(err => {
-                dispatch(fetchDataError(err))
-            })
     }
 }
+
 export function fetchSalary() {
     return dispatch => {
-        dispatch(fetchDataPending());
         fetch("https://rjs101xbackend.herokuapp.com/staffsSalary")
             .then(res => res.json())
             .then(data => {
-                dispatch(fetchDataSuccess(data))
+                dispatch(setSalary(data))
             })
-            .catch(err => {
-                dispatch(fetchDataError(err))
+    }
+}
+
+export function fetchNewStaff(staff) {
+    return dispatch => {
+        fetch("https://rjs101xbackend.herokuapp.com/staffs", {
+            method: "POST",
+            body: JSON.stringify(staff),
+            mode: 'cors',
+                headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                  'Access-Control-Allow-Origin':'*'
+                }
+        })
+            .then(res => res.json())
+            .then(data => {
+                dispatch(addStaff(data))
+            })
+    }
+}
+
+export function fetchSearchedStaff(text) {
+    return dispatch => {
+        fetch("https://rjs101xbackend.herokuapp.com/staffs", {
+            method: "POST",
+            body: JSON.stringify(text),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        })
+            .then(res => res.json())
+            .then(data => {
+                dispatch(searchStaffs(data))
             })
     }
 }
