@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./ui/header/NavBar.js";
-import ShowStaffList from "./homepages/staffs/ShowStaffList.js";
-import ShowStaff from "./homepages/staffs/ShowStaff.js";
+import ShowStaffList from "./homepages/render/ShowStaffList.js";
+import ShowStaff from "./homepages/render/ShowStaff.js";
 import ShowSalary from "./components/salary/ShowSalary.js";
 import ShowDepartments from "./components/department/ShowDepartments.js";
 import Department from "./components/department/Department.js";

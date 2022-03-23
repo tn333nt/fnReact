@@ -7,7 +7,7 @@ import "./ShowDepartments.css";
 export default function ShowDepartments() {
   const navigate = useNavigate()
 
-  const departments = useSelector(state => state.fetchData.data)
+  const departments = useSelector(state => state.departments)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchDepartments())
@@ -20,7 +20,6 @@ export default function ShowDepartments() {
           key={department.id}
           className="item_departments"
           onClick={() => {
-            //disatch action cập nhaậ state deparment
             dispatch(updateDepartment(department));
             navigate(`/ShowDepartments/${department.id}`)
           }}>

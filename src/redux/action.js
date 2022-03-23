@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom"
 
 export const addStaff = (staff) => {
     return {
@@ -13,7 +12,7 @@ export const searchStaffs = (text) => {
         payload: text
     }
 }
-
+//
 export function fetchDataPending(data) {
     return {
         type: "FETCH_DATA_PENDING",
@@ -27,21 +26,13 @@ export function fetchDataSuccess(data) {
         payload: data
     }
 }
-export function setDepartmentDetail(data) {
-    return {
-        type: "SET_DEPARTMENT_DETAIL",
-        payload: data
-    }
-}
-
-
 export function fetchDataError(data) {
     return {
         type: "FETCH_DATA_ERROR",
         payload: data
     }
 }
-
+//
 export function updateDepartment(data) {
     return {
         type: "UPDATE_DEPARTMENT",
@@ -49,7 +40,21 @@ export function updateDepartment(data) {
     }
 }
 
+export function setDepartmentDetail(data) {
+    return {
+        type: "SET_DEPARTMENT_DETAIL",
+        payload: data
+    }
+}
 
+export function setDepartments(data) {
+    return {
+        type: "SET_DEPARTMENTS",
+        payload: data
+    }
+}
+
+//
 export function fetchStaffs() {
     return dispatch => {
         dispatch(fetchDataPending());
@@ -69,7 +74,7 @@ export function fetchDepartments() {
         fetch("https://rjs101xbackend.herokuapp.com/departments")
             .then(res => res.json())
             .then(data => {
-                dispatch(fetchDataSuccess(data))
+                dispatch(setDepartments(data))
             })
             .catch(err => {
                 dispatch(fetchDataError(err))
@@ -78,6 +83,7 @@ export function fetchDepartments() {
 }
 export function fetchDepartment() {
     const id = window.location.pathname.split('/')[2];
+    console.log(window.location)
     return dispatch => {
         dispatch(fetchDataPending());
         fetch(`https://rjs101xbackend.herokuapp.com/departments/${id}`)

@@ -1,5 +1,4 @@
 import { STAFFS } from "../staffs";
-// need replace STAFFS from js file -> from api
 
 const initialState = {
   filter: {
@@ -11,19 +10,14 @@ const initialState = {
     success: false,
     error: false
   },
-  departmentDetail: [],
   staffList: !localStorage.getItem("staffList") ? STAFFS : JSON.parse(localStorage.getItem("staffList")),
-  department: undefined
+  department: undefined,
+  departments: [],
+  departmentDetail: []
 };
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case "UPDATE_DEPARTMENT": {
-      return {
-        ...state,
-        department: action.payload
-      };
-    }
     case "ADD_STAFF": {
       return {
         ...state,
@@ -42,6 +36,7 @@ export default function rootReducer(state = initialState, action) {
         staffList: data,
       };
     }
+    //
     case "FETCH_DATA_PENDING": {
       return {
         ...state,
@@ -61,12 +56,6 @@ export default function rootReducer(state = initialState, action) {
         }
       }
     }
-    case "SET_DEPARTMENT_DETAIL": {
-      return {
-        ...state,
-        departmentDetail: action.payload,
-      }
-    }
     case "FETCH_DATA_ERROR": {
       return {
         ...state,
@@ -74,6 +63,25 @@ export default function rootReducer(state = initialState, action) {
           ...state.fetchData,
           error: true
         }
+      }
+    }
+    //
+    case "UPDATE_DEPARTMENT": {
+      return {
+        ...state,
+        department: action.payload
+      };
+    }
+    case "SET_DEPARTMENTS": {
+      return {
+        ...state,
+        departments: action.payload,
+      }
+    }
+    case "SET_DEPARTMENT_DETAIL": {
+      return {
+        ...state,
+        departmentDetail: action.payload,
       }
     }
     default:

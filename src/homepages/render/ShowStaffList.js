@@ -5,7 +5,7 @@ import "./ShowStaffList.css";
 import AddStaff from "../features/add/AddStaff.js";
 import ShowForm from "../features/add/ShowForm.js";
 import SearchStaffs from "../features/search/SearchStaffs";
-import { fetchStaffs } from "../../redux/action";
+import { fetchStaffs, setDepartments } from "../../redux/action";
 
 export default function ShowStaffList() {
   const navigate = useNavigate();
@@ -14,9 +14,9 @@ export default function ShowStaffList() {
   const STAFFS = useSelector(state => state.fetchData.data);
 
   const dispatch = useDispatch()
-  //worked:D
+
   useEffect(() => {
-    dispatch(fetchStaffs()); // chắc vậy, vì page này cũng đâu có sự kiện để trigger
+    dispatch(fetchStaffs());
   },[dispatch]) 
 
   const [formState, setFormState] = useState(false);
@@ -42,6 +42,7 @@ export default function ShowStaffList() {
               key={item.id}
               className="item_staffList"
               onClick={() => {
+                dispatch(setDepartments(item))
                 navigate(`/staffs/${item.id}`)
               }}
             >

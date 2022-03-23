@@ -32,10 +32,6 @@
     margin-bottom: 21px;
 }
 
-.btn_ShowForm{
-    position: relative;
-    left: 45%;
-}
 
 .validate {
     margin: 0;
@@ -43,5 +39,29 @@
     text-align: center;
 }
 
+/* animation */
+.btn_ShowForm{
+    position: relative;
+    padding: 9px;
+    border-radius: 9px;
+    left: 30%;
+    background-color: #007bfe;
+    border: 3px solid #3a99ff;
+    color: #fff;
+}
+
+.btn_ShowForm:hover{
+    animation : changeColor 1.5s ease-in-out forwards;
+    cursor: pointer;
+    font-size: larger;
+}
+
+@keyframes changeColor {
+    to {
+        background-color: #fff;
+        border: 3px solid #eee;
+        color: #007bfe;
+    }
+}
 
 

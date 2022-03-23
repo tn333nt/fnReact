@@ -21,15 +21,14 @@ export default function Department() {
         <>
             <h1>Phòng ban: {departmentInfo?.name}</h1>
             {departmentDetail && departmentDetail.length > 0 && departmentDetail.map(item => (
-                <div className="container" style={{ display: "flex" }}>
-                    <img src={item?.image?.toString().replace("asset/", 'assets/')} alt={item.name} width={50} height={50} />
-                    <ul style={{ width: "50%" }}>
+                <div style={{ display: "flex" }}> {/* can not use gridTemplateColumns with repeat(), autoFit, ...? */}
+                    <img src={item.image.replace("asset/", 'assets/')} alt={item.name} width="15%" height="15%" style={{margin: 12}} />
+                    <ul style={{ width: "60%" }}>
                         <li>Họ và tên : {item.name}</li>
                         <li>Ngày sinh : {dateFormat(item.doB, "dd/mm/yyyy")}</li>
                         <li>
                             Ngày vào công ty : {dateFormat(item.startDate, "dd/mm/yyyy")}
                         </li>
-                        <li>Phòng ban : {item.departmentId.name || item.departmentId}</li>
                         <li>Số ngày nghỉ còn lại : {item.annualLeave}</li>
                         <li>Số ngày đã làm thêm : {item.overTime}</li>
                     </ul>

@@ -18,7 +18,16 @@ export default function SearchStaffs() {
         placeholder="search..."
         required
       />
-      <button onClick={handleSearch}> Search </button>
+      <button 
+      onClick={handleSearch}
+      style={{ 
+        margin: 9, 
+        backgroundColor: "#007bfe", 
+        borderRadius: 3, 
+        border: "3px solid #3a99ff", 
+        color: "white",
+       }}
+      > Search </button>
     </div>
   );
 }
