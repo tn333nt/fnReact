@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addStaff, fetchNewStaff, fetchStaffs } from "../../../redux/action"
+import { fetchNewStaff, fetchStaffs } from "../../redux/action"
 import "./AddStaff.css"
 
 const initialValues = {

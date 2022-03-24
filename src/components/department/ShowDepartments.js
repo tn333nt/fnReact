@@ -6,9 +6,10 @@ import "./ShowDepartments.css";
 
 export default function ShowDepartments() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const departments = useSelector(state => state.departments)
-  const dispatch = useDispatch()
+  
   useEffect(() => {
     dispatch(fetchDepartments())
   }, [dispatch])

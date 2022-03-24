@@ -3,7 +3,7 @@ import dateFormat from "dateformat";
 import { useDispatch, useSelector } from "react-redux";
 import "./ShowStaff.css";
 import { useEffect } from "react";
-import { fetchDepartments, fetchStaff } from "../../redux/action";
+import { fetchDepartments } from "../../redux/action";
 
 
 export default function ShowStaff() {
@@ -22,10 +22,6 @@ export default function ShowStaff() {
     return department.id === staff.departmentId ? department : []
   })
   
-  // ấn vào dep trc thì lấy đc dữ liệu từ dep -> render
-  // refresh lại thì mất data vừa lấy -> err
-  // vậy làm sao để có dữ liệu từ dep mà ko cần bấm vào dep ?
-  // ko phải fetch như trên kia hả@@
   console.log(dep) // undefined
   console.log(departments) // []
   

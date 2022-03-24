@@ -127,10 +127,10 @@ export function fetchNewStaff(staff) {
         fetch("https://rjs101xbackend.herokuapp.com/staffs", {
             method: "POST",
             body: JSON.stringify(staff),
-            mode: 'cors',
+            // mode: 'cors',
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                'Access-Control-Allow-Origin': '*'
+                // 'Access-Control-Allow-Origin': '*'
             }
         })
             .then(res => res.json())
@@ -140,30 +140,34 @@ export function fetchNewStaff(staff) {
     }
 }
 
-export function fetchSearchedStaff(text) {
-    return dispatch => {
-        fetch("https://rjs101xbackend.herokuapp.com/staffs", {
-            method: "POST",
-            body: JSON.stringify(text),
-            headers: { "Content-type": "application/json; charset=UTF-8" }
-        })
-            .then(res => res.json())
-            .then(data => {
-                dispatch(searchStaffs(data))
-            })
-    }
-}
+// export function fetchSearchedStaff(data) {
+//     return dispatch => {
+//         fetch("https://rjs101xbackend.herokuapp.com/staffs", {
+//             method: "PUT",
+//             body: JSON.stringify(data),
+//             // mode: 'cors',
+//             headers: {
+//                 "Content-type": "application/json; charset=UTF-8",
+//                 // 'Access-Control-Allow-Origin': '*'
+//             }
+//         })
+//             .then(res => res.json())
+//             .then(data => {
+//                 dispatch(searchStaffs(data))
+//             })
+//     }
+// }
 
 export function fetchDeleteStaff(staff) {
-    const id = window.location.pathname.split('/')[2];
+    console.log(staff)
     return dispatch => {
-        fetch(`https://rjs101xbackend.herokuapp.com/departments/${id}`, {
+        fetch(`https://rjs101xbackend.herokuapp.com/staffs/${staff.id}`, {
             method: "DELETE",
             body: JSON.stringify(staff),
-            mode: 'cors',
+            // mode: 'cors',
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                'Access-Control-Allow-Origin': '*'
+                // 'Access-Control-Allow-Origin': '*'
             }
         })
             .then(res => res.json())
@@ -176,13 +180,13 @@ export function fetchDeleteStaff(staff) {
 export function fetchUpdateStaff(info) {
     const id = window.location.pathname.split('/')[2];
     return dispatch => {
-        fetch(`https://rjs101xbackend.herokuapp.com/departments/${id}`, {
+        fetch(`https://rjs101xbackend.herokuapp.com/staffs/${id}`, {
             method: "PATCH",
             body: JSON.stringify(info),
-            mode: 'cors',
+            // mode: 'cors',
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                'Access-Control-Allow-Origin': '*'
+                // 'Access-Control-Allow-Origin': '*'
             }
         })
             .then(res => res.json())

@@ -45,8 +45,8 @@
     padding: 9px;
     border-radius: 9px;
     left: 30%;
-    background-color: #007bfe;
-    border: 3px solid #3a99ff;
+    background-color: #3085d6;
+    border: 3px solid #619dd6;
     color: #fff;
 }
 
@@ -60,7 +60,7 @@
     to {
         background-color: #fff;
         border: 3px solid #eee;
-        color: #007bfe;
+        color: #3085d6;
     }
 }
 
