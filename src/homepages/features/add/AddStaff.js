@@ -1,7 +1,7 @@
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addStaff, fetchNewStaff } from "../../../redux/action"
+import { addStaff, fetchNewStaff, fetchStaffs } from "../../../redux/action"
 import "./AddStaff.css"
 
 const initialValues = {
@@ -52,6 +52,9 @@ export default function AddStaff(props) {
 
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(fetchStaffs()); 
+  },[dispatch])
   const staffs = useSelector(state => state.staffs)
 
   const handleAddStaff = (e) => {

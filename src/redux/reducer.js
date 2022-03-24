@@ -4,7 +4,7 @@ const initialState = {
     search: "",
   },
   staffs: !localStorage.getItem("staffs") ? [] : JSON.parse(localStorage.getItem("staffs")),
-  staff: [],
+  staff: !localStorage.getItem("staff") ? [] : JSON.parse(localStorage.getItem("staff")),
   department: [],
   departments: [],
   departmentDetail: [],
@@ -13,10 +13,25 @@ const initialState = {
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
+
     case "ADD_STAFF": {
       return {
         ...state,
         staffs: [...state.staffs, action.payload],
+      };
+    }
+
+    case "DELETE_STAFF": {
+      return {
+        ...state,
+        staffs: [...state.staffs, action.payload],
+      };
+    }
+
+    case "UPDATE_STAFF": {
+      return {
+        ...state,
+        staff: [...state.staff, action.payload],
       };
     }
 

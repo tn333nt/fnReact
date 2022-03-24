@@ -3,34 +3,38 @@ import dateFormat from "dateformat";
 import { useDispatch, useSelector } from "react-redux";
 import "./ShowStaff.css";
 import { useEffect } from "react";
-import { fetchDepartments, setStaff } from "../../redux/action";
+import { fetchDepartments, fetchStaff } from "../../redux/action";
 
 
 export default function ShowStaff() {
   const navigate = useNavigate();
 
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(fetchDepartments()); 
+  },[dispatch])
+  
+  const departments = useSelector(state => state.departments)
+  
+  const dep = departments.find(department => {
+    console.log(department)
+    return department.id === staff.departmentId ? department : []
+  })
+  
+  // ấn vào dep trc thì lấy đc dữ liệu từ dep -> render
+  // refresh lại thì mất data vừa lấy -> err
+  // vậy làm sao để có dữ liệu từ dep mà ko cần bấm vào dep ?
+  // ko phải fetch như trên kia hả@@
+  console.log(dep) // undefined
+  console.log(departments) // []
+  
+  // useEffect(() => {
+  //   dispatch(fetchStaff()); 
+  // },[dispatch])
   const staff = useSelector(state => state.staff)
   console.log(staff)
 
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchDepartments()); 
-  })
-  useEffect(() => {
-    dispatch(setStaff()); 
-  },[dispatch])
-
-  const departments = useSelector(state => state.departments)
-
-  const dep = departments.find(department => {
-    if (department.id === staff.departmentId) {
-      return department
-    }
-    return department
-  })
-  
-  console.log(dep) // undefined
-  console.log(departments) // []
 
   return (
     <div className="container_staff">

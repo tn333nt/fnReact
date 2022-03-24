@@ -5,7 +5,7 @@ import "./ShowStaffList.css";
 import AddStaff from "../features/add/AddStaff.js";
 import ShowForm from "../features/add/ShowForm.js";
 import SearchStaffs from "../features/search/SearchStaffs";
-import { fetchStaffs, setDepartments, setStaff } from "../../redux/action";
+import { fetchStaffs, setDepartments, setStaff, setStaffs } from "../../redux/action";
 
 export default function ShowStaffList() {
   const navigate = useNavigate();
@@ -21,6 +21,9 @@ export default function ShowStaffList() {
   const staffs = useSelector(state => state.staffs);
 
   const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchStaffs()); 
+  },[dispatch])
 
   return (
     <>
@@ -36,9 +39,6 @@ export default function ShowStaffList() {
               key={staff.id}
               className="item_staffList"
               onClick={() => {
-                // not set staff
-                // still need department
-                // but how in here? =)
                 dispatch(setStaff(staff))
                 navigate(`/staffs/${staff.id}`)
               }}
