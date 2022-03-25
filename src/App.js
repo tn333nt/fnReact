@@ -5,7 +5,7 @@ import ShowStaff from "./homepages/render/ShowStaff.js";
 import ShowSalary from "./components/salary/ShowSalary.js";
 import ShowDepartments from "./components/department/ShowDepartments.js";
 import Department from "./components/department/Department.js";
-import Footer from "./ui/footer/footer";
+import Footer from "./ui/footer/Footer";
 
 function App() {
   return (

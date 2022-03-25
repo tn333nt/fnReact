@@ -1,26 +1,26 @@
-import { useRef } from "react"
+import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { fetchUpdateStaff } from "../../redux/action"
 
 
 export default function UpdateStaff(){
     const dispatch = useDispatch()
-    const inputRef = useRef()
+
+    const [value, setValue] = useState()
 
     const handleUpdate = () => {
-        const values = inputRef.current.value
-        dispatch(fetchUpdateStaff(values))
-
-        localStorage.setItem("staff", values)
+        dispatch(fetchUpdateStaff(value))
+        // setValue("")
     }
 
     return (
         <>
             <input 
             type="text" 
-            ref={inputRef}
+            value={value}
             required
             style={{width:"88%"}}
+            onChange={(e) => setValue(e.target.value)}
             />
             <button onClick={handleUpdate}> update </button>
         </>

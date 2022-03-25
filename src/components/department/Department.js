@@ -12,14 +12,14 @@ export default function Department() {
     const departmentDetail = useSelector(state => {
         return state.departmentDetail
     })
-    const departmentInfo = useSelector(state => {
+    const department = useSelector(state => {
         return state.department
     })
     console.log("departmentDetail", departmentDetail)
-    console.log("departmentInfo", departmentInfo)
+    console.log("department", department)
     return (
         <>
-            <h1>Phòng ban: {departmentInfo?.name}</h1>
+            <h1>Phòng ban: {department?.name}</h1>
             {departmentDetail && departmentDetail.length > 0 && departmentDetail.map(item => (
                 <div style={{ display: "flex" }}> {/* can not use gridTemplateColumns with repeat(), autoFit, ...? */}
                     <img src={item.image.replace("asset/", 'assets/')} alt={item.name} width="15%" height="15%" style={{margin: 12}} />

@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchNewStaff, fetchStaffs } from "../../redux/action"
+import { fetchNewStaff, fetchStaffs, updateDepartment } from "../../redux/action"
 import "./AddStaff.css"
 
 const initialValues = {
@@ -39,9 +39,7 @@ export default function AddStaff(props) {
       setValidateName("")
       return;
     }
-
   }
-
 
   const [option, setOption] = useState("sale")
 
@@ -49,12 +47,13 @@ export default function AddStaff(props) {
     setOption(e.target.value)
   }
 
-
+  //
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchStaffs()); 
   },[dispatch])
+  const departments = useSelector(state => state.departments)
   const staffs = useSelector(state => state.staffs)
 
   const handleAddStaff = (e) => {
@@ -65,21 +64,26 @@ export default function AddStaff(props) {
       setValidateStartDate("Yêu cầu nhập")
       setValues(initialValues)
       return;
-    } else {
-      const request = {
-        id: staffs.length,
-        name: values.name,
-        doB: values.doB,
-        salaryScale: values.salaryScale,
-        startDate: values.startDate,
-        department: option.name,
-        annualLeave: values.annualLeave,
-        overTime: values.overTime,
-        image: '/assets/images/alberto.png',
-      }
-      dispatch(fetchNewStaff(request))
-      localStorage.setItem("staffs", JSON.stringify([...staffs, request]))
+    } 
+
+    const newStaff = {
+      id: staffs.length,
+      name: values.name,
+      doB: values.doB,
+      salaryScale: values.salaryScale,
+      startDate: values.startDate,
+      department: option.name,
+      annualLeave: values.annualLeave,
+      overTime: values.overTime,
+      image: '/assets/images/alberto.png',
     }
+    dispatch(fetchNewStaff(newStaff))
+
+    const checkDepartmentId = departments.find(department => departments.name === newStaff.department)
+    console.log(departments.name);
+    console.log(newStaff.department);
+
+    dispatch(updateDepartment(checkDepartmentId))
 
     props.handleHideForm();
     

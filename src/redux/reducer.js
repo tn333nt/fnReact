@@ -3,10 +3,9 @@ const initialState = {
   filter: {
     search: "",
   },
-  staffs: !localStorage.getItem("staffs") ? [] : JSON.parse(localStorage.getItem("staffs")),
-  // use to take new data to search after each time search
-  staffList: !localStorage.getItem("staffs") ? [] : JSON.parse(localStorage.getItem("staffs")),
-  staff: !localStorage.getItem("staff") ? [] : JSON.parse(localStorage.getItem("staff")),
+  staffs: [],
+  staffList: [], // use to take new data to search after each time search
+  staff: [],
   department: [],
   departments: [],
   departmentDetail: [],
@@ -33,7 +32,7 @@ export default function rootReducer(state = initialState, action) {
     case "UPDATE_STAFF": {
       return {
         ...state,
-        staff: [...state.staff, action.payload],
+        staffs: action.payload
       };
     }
 
@@ -43,7 +42,7 @@ export default function rootReducer(state = initialState, action) {
         filter: {
           search: action.payload,
         },
-        staffs: action.payload, // need clear after render
+        staffs: action.payload, 
       };
     }
 
@@ -51,7 +50,8 @@ export default function rootReducer(state = initialState, action) {
     case "SET_STAFFS": {
       return {
         ...state,
-        staffs: action.payload
+        staffs: action.payload,
+        staffList: action.payload
       };
     }
 
@@ -61,22 +61,29 @@ export default function rootReducer(state = initialState, action) {
         staff: action.payload
       };
     }
-
-    case "SET_DEPARTMENT": {
-      return {
-        ...state,
-        department: action.payload
-      };
-    }
-
+    
     case "SET_DEPARTMENTS": {
       return {
         ...state,
         departments: action.payload,
       }
     }
-
+    
+    case "SET_DEPARTMENT": {
+      return {
+        ...state,
+        department: action.payload 
+      };
+    }
+    
     case "SET_DEPARTMENT_DETAIL": {
+      return {
+        ...state,
+        departmentDetail: action.payload,
+      }
+    }
+
+    case "UPDATE_DEPARTMENT_DETAIL": {
       return {
         ...state,
         departmentDetail: action.payload,

@@ -3,7 +3,7 @@ import dateFormat from "dateformat";
 import { useDispatch, useSelector } from "react-redux";
 import "./ShowStaff.css";
 import { useEffect } from "react";
-import { fetchDepartments } from "../../redux/action";
+import { fetchDepartments, fetchStaff } from "../../redux/action";
 
 
 export default function ShowStaff() {
@@ -15,21 +15,14 @@ export default function ShowStaff() {
     dispatch(fetchDepartments()); 
   },[dispatch])
   
+  const staff = useSelector(state => state.staff)
   const departments = useSelector(state => state.departments)
   
-  const dep = departments.find(department => {
-    console.log(department)
-    return department.id === staff.departmentId ? department : []
-  })
-  
-  console.log(dep) // undefined
-  console.log(departments) // []
-  
-  // useEffect(() => {
-  //   dispatch(fetchStaff()); 
-  // },[dispatch])
-  const staff = useSelector(state => state.staff)
-  console.log(staff)
+  const department = departments.find(department => department.id === staff.departmentId) 
+
+  useEffect(() => { 
+    dispatch(fetchStaff())
+  },[dispatch])
 
 
   return (
@@ -42,14 +35,14 @@ export default function ShowStaff() {
       </div>
 
       <div className="item_staff">
-        <img src={staff.image.replace(/"assetss"|"asset"/g, "assets")} alt="" />
+        <img src={staff?.image} alt="" />
         <ul>
           <li>Họ và tên : {staff.name}</li>
           <li>Ngày sinh : {dateFormat(staff.doB, "dd/mm/yyyy")}</li>
           <li>
             Ngày vào công ty : {dateFormat(staff.startDate, "dd/mm/yyyy")}
           </li>
-          <li>Phòng ban : {dep.name}</li>
+          <li>Phòng ban : {department.name}</li>
           <li>Số ngày nghỉ còn lại : {staff.annualLeave}</li>
           <li>Số ngày đã làm thêm : {staff.overTime}</li>
         </ul>
