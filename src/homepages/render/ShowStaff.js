@@ -3,27 +3,29 @@ import dateFormat from "dateformat";
 import { useDispatch, useSelector } from "react-redux";
 import "./ShowStaff.css";
 import { useEffect } from "react";
-import { fetchDepartments, fetchStaff } from "../../redux/action";
+import UpdateStaff from "../features/UpdateStaff";
+import { fetchDepartments, fetchStaff, setFormStateUpdate } from "../../redux/action";
 
 // problem 2
 // why ? có chỉnh sửa gì liên quan đâu ?
 export default function ShowStaff() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-  
-  useEffect(() => {
-    dispatch(fetchDepartments()); 
-  },[dispatch])
-  
+  const formStateUpdate = useSelector(state => state.formState.toUpdate)
   const staff = useSelector(state => state.staff)
   const departments = useSelector(state => state.departments)
 
-  const department = departments.find(department => department.id === staff.departmentId) 
+  useEffect(() => {
+    dispatch(fetchDepartments());
+    // dispatch(fetchStaff()); 
+  }, [dispatch])
 
-  useEffect(() => { 
-    dispatch(fetchStaff())
-  },[dispatch])
+  const department = departments.find(department => department.id === staff.departmentId)
+
+  console.log(staff);
+  console.log(departments); // no lai ko co data // lần này fetch đúng r mà nhỉ
+  console.log(department);
 
   return (
     <div className="container_staff">
@@ -32,6 +34,13 @@ export default function ShowStaff() {
           <span onClick={() => navigate(-1)} className="goBack">Nhân viên</span>
           <span>/ {staff.name} </span>
         </div>
+        <div>
+          <button onClick={() => dispatch(setFormStateUpdate(true))}> update </button>
+        </div>
+      </div>
+
+      <div>
+        {formStateUpdate && <UpdateStaff />}
       </div>
 
       <div className="item_staff">

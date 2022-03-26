@@ -13,6 +13,20 @@ export function setValues(value) {
     }
 }
 
+export function setFormStateAdd(state) {
+    return {
+        type: "SET_FORM_STATE_ADD",
+        payload: state
+    }
+}
+
+export function setFormStateUpdate(state) {
+    return {
+        type: "SET_FORM_STATE_UPDATE",
+        payload: state
+    }
+}
+
 export function deleteStaff(staff) {
     return {
         type: "DELETE_STAFF",

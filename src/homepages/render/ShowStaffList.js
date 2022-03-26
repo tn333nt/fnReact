@@ -4,29 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import "./ShowStaffList.css";
 import AddStaff from "../features/AddStaff.js";
 import SearchStaffs from "../features/SearchStaffs";
-import { fetchStaffs, setStaff } from "../../redux/action";
+import { fetchStaffs, setFormStateAdd, setStaff } from "../../redux/action";
 import DeleteStaff from "../features/DeleteStaff";
-import UpdateStaff from "../features/UpdateStaff";
 
 export default function ShowStaffList() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
-  const [formStateAdd, setFormStateAdd] = useState(false);
-  const handleShowFormAdd = () => {
-    setFormStateAdd(true);
-  };
-  const handleHideFormAdd = () => {
-    setFormStateAdd(false)
-  }
-
-  const [formStateUpdate, setFormStateUpdate] = useState(false);
-  const handleShowFormUpdate = () => {
-    setFormStateUpdate(true);
-  };
-  const handleHideFormUpdate = () => {
-    setFormStateUpdate(false)
-  }
+  const formStateAdd = useSelector(state => state.formState.toAdd)
 
   const staffs = useSelector(state => state.staffs);
 
@@ -38,8 +23,7 @@ export default function ShowStaffList() {
     <>
       <div className="functions">
         <button
-          className="btn_AddStaff"
-          onClick={handleShowFormAdd}
+          onClick={()=> dispatch(setFormStateAdd(true))}
           style={{
             padding: '10px 25px',
             backgroundColor: "#3085d6",
@@ -48,8 +32,8 @@ export default function ShowStaffList() {
             color: "white",
             fontSize: 21
           }}
-        > + </button>
-        {formStateAdd && <AddStaff handleHideFormAdd={handleHideFormAdd} />}
+        > ADD STAFF </button>
+        {formStateAdd && <AddStaff />}
         <SearchStaffs />
       </div>
       <h1>Nhân viên</h1> <hr />
@@ -68,11 +52,6 @@ export default function ShowStaffList() {
             alt={staff.name} 
             />
             <p>{staff.name}</p>
-            <div>
-              {formStateUpdate && <UpdateStaff handleHideFormUpdate={handleHideFormUpdate} />}
-              {/* problem 1 */}
-              <button onClick={handleShowFormUpdate}> update </button>
-            </div>
             <DeleteStaff staff={staff} />
           </div>
         ))}

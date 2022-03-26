@@ -14,7 +14,7 @@ export default function ShowDepartments() {
     dispatch(fetchDepartments())
   }, [dispatch])
 
-  console.log(departments)
+  console.log(departments) // co data =)
 
   return (
     <div className="container_departments">

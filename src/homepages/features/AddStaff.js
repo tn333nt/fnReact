@@ -1,11 +1,12 @@
 
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchNewStaff, updateDepartment } from "../../redux/action"
+import { fetchDepartments, fetchNewStaff, setFormStateAdd, updateDepartment } from "../../redux/action"
 import "./AddStaff.css"
 import Form from "./Form"
 
 // problem 3 
-export default function AddStaff(props) {
+export default function AddStaff() {
 
   const dispatch = useDispatch()
 
@@ -18,20 +19,18 @@ export default function AddStaff(props) {
 
     console.log(values)
 
+    // to add new staff into dep detail
     const checkDepartmentId = departments.find(department => departments.name === values.department)
     console.log(departments.name);
     console.log(values.department);
 
     dispatch(updateDepartment(checkDepartmentId))
 
-    props.handleHideForm();
+    // dispatch(setFormStateAdd(false))
+
   }
 
   return (
-    <Form 
-    handleAddStaff={handleAddStaff}
-    // handleHideFormAdd={props.handleHideFormAdd()}// Cannot update a component (`ShowStaffList`) while rendering a different component (`AddStaff`)
-    handleHideFormAdd={props.handleHideFormAdd}
-    />
+    <Form handleAddStaff={handleAddStaff}/>
   );
 }

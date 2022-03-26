@@ -22,6 +22,11 @@
     color : blue;
 }
 
+.nav_staff {
+    display: flex;
+    justify-content: space-between;
+}
+
 @media screen and (max-width: 1086px ) {
     .item_staff img {
         grid-column: 1/5;

@@ -10,7 +10,7 @@ const initialState = {
   departments: [],
   departmentDetail: [],
   salary: [],
-  values : {
+  values: {
     name: "",
     doB: "",
     salaryScale: "",
@@ -19,23 +19,46 @@ const initialState = {
     annualLeave: "",
     overTime: "",
     image: '/assets/images/alberto.png',
-}
+  },
+  formState: {
+    toAdd: false,
+    toUpdate: false,
+  }
 };
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
 
+    case "SET_VALUES": {
+      return {
+        // ...state,
+        values: action.payload
+      };
+    }
+
+    case "SET_FORM_STATE_ADD": {
+      return {
+        // ...state,
+        formState: {
+          toAdd: action.payload
+        }
+      };
+    }
+
+    case "SET_FORM_STATE_UPDATE": {
+      return {
+        // ...state,
+        formState: {
+          toUpdate: action.payload
+        }
+      };
+    }
+   
+    //
     case "ADD_STAFF": {
       return {
         ...state,
         staffs: action.payload
-      };
-    }
-
-    case "SET_VALUES": {
-      return {
-        ...state,
-        values: action.payload
       };
     }
 
@@ -59,7 +82,7 @@ export default function rootReducer(state = initialState, action) {
         filter: {
           search: action.payload,
         },
-        staffs: action.payload, 
+        staffs: action.payload,
       };
     }
 
@@ -78,21 +101,21 @@ export default function rootReducer(state = initialState, action) {
         staff: action.payload
       };
     }
-    
+
     case "SET_DEPARTMENTS": {
       return {
         ...state,
         departments: action.payload,
       }
     }
-    
+
     case "SET_DEPARTMENT": {
       return {
         ...state,
-        department: action.payload 
+        department: action.payload
       };
     }
-    
+
     // case "SET_DEPARTMENT_DETAIL": {
     //   return {
     //     ...state,

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setValues } from "../../redux/action"
+import { setFormStateAdd, setFormStateUpdate, setValues } from "../../redux/action"
 
 export default function Form(props) {
     const dispatch = useDispatch()
@@ -11,7 +11,7 @@ export default function Form(props) {
 
     const handleInputChange = (e) => {
         dispatch(setValues({
-            ...values,
+            // ...values,
             [e.target.name]: e.target.value
         }))
     }
@@ -23,9 +23,22 @@ export default function Form(props) {
         setOption(e.target.value)
     }
 
+    const formStateAdd = useSelector(state => state.formState.toAdd)
+    const formStateUpdate = useSelector(state => state.formState.toUpdate)
+
+    const handleHideForm = () => { 
+        formStateAdd && dispatch(setFormStateAdd(false))
+        formStateUpdate && dispatch(setFormStateUpdate(false))
+    }
+
+    console.log(props.handleAddStaff)
+    console.log(props.handleAddStaff())
     const handleSubmit = () => {
-        // props.handleHideFormAdd() || props.handleHideFormUpdate()
-        props.handleHideFormAdd() ? props.handleHideFormAdd() : props.handleHideFormUpdate()
+        props.handleAddStaff ? handlePOSTstaff() : handlePATCHstaff()
+        // props.handleAddStaff ? props.handleAddStaff() : props.updateStaff()
+    }
+    
+    const handlePOSTstaff = () => {
 
         props.handleAddStaff()
 
@@ -48,8 +61,11 @@ export default function Form(props) {
 
         if (!values.name || !values.doB || !values.salaryScale) {
             dispatch(setValues({}))
-            return;
-        }
+        }        
+    }
+
+    const handlePATCHstaff = () => {
+        props.handleUpdate()
     }
 
     return (
@@ -58,7 +74,7 @@ export default function Form(props) {
                 <div className="nav_Form">
                     <h2>
                         {" "}Thêm nhân viên{" "}
-                        <span><button onClick={props.handleHideFormAdd || props.handleHideFormUpdate}>X</button></span>
+                        <span><button onClick={handleHideForm}>X</button></span>
                     </h2>
                     <hr />
                 </div>
@@ -150,10 +166,17 @@ export default function Form(props) {
                     </div>
 
                 </div>
+                {/* test 1 */}
                 <button
                     className="btn_ShowForm"
                     onClick={handleSubmit}
+                    // onClick={handlePOSTstaff || handlePATCHstaff}
+                    // onClick={() => props.handleAddStaff() ? handlePOSTstaff : handlePATCHstaff}
                 > Thêm </button>
+
+                {/* test 2 */}
+                {/* {props.handleAddStaff && <button className="btn_ShowForm" onClick={handlePOSTstaff}> Add </button>}
+                {props.UpdateStaff && <button className="btn_ShowForm" onClick={handlePATCHstaff}> Update </button>} */}
             </div>
         </div>
     )
