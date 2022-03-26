@@ -9,8 +9,6 @@ export default function SearchStaffs() {
   const staffs = useSelector(state => state.staffList)
 
   const handleSearch = () => {
-    // need take reference TO filter search from staffList
-    // and use values to update state staffs
     const value = inputRef.current.value
 
     if (value) {

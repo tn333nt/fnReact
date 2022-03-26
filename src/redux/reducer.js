@@ -9,7 +9,17 @@ const initialState = {
   department: [],
   departments: [],
   departmentDetail: [],
-  salary: []
+  salary: [],
+  values : {
+    name: "",
+    doB: "",
+    salaryScale: "",
+    startDate: "",
+    department: "",
+    annualLeave: "",
+    overTime: "",
+    image: '/assets/images/alberto.png',
+}
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -18,7 +28,14 @@ export default function rootReducer(state = initialState, action) {
     case "ADD_STAFF": {
       return {
         ...state,
-        staffs: [...state.staffs, action.payload],
+        staffs: action.payload
+      };
+    }
+
+    case "SET_VALUES": {
+      return {
+        ...state,
+        values: action.payload
       };
     }
 
@@ -76,12 +93,12 @@ export default function rootReducer(state = initialState, action) {
       };
     }
     
-    case "SET_DEPARTMENT_DETAIL": {
-      return {
-        ...state,
-        departmentDetail: action.payload,
-      }
-    }
+    // case "SET_DEPARTMENT_DETAIL": {
+    //   return {
+    //     ...state,
+    //     departmentDetail: action.payload,
+    //   }
+    // }
 
     case "UPDATE_DEPARTMENT_DETAIL": {
       return {

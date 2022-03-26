@@ -5,7 +5,8 @@ import "./ShowStaff.css";
 import { useEffect } from "react";
 import { fetchDepartments, fetchStaff } from "../../redux/action";
 
-
+// problem 2
+// why ? có chỉnh sửa gì liên quan đâu ?
 export default function ShowStaff() {
   const navigate = useNavigate();
 
@@ -17,13 +18,12 @@ export default function ShowStaff() {
   
   const staff = useSelector(state => state.staff)
   const departments = useSelector(state => state.departments)
-  
+
   const department = departments.find(department => department.id === staff.departmentId) 
 
   useEffect(() => { 
     dispatch(fetchStaff())
   },[dispatch])
-
 
   return (
     <div className="container_staff">

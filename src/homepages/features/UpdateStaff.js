@@ -1,28 +1,23 @@
-import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { fetchUpdateStaff } from "../../redux/action"
+import Form from "./Form"
 
 
-export default function UpdateStaff(){
+export default function UpdateStaff(props){
     const dispatch = useDispatch()
 
-    const [value, setValue] = useState()
+    const values = useSelector(state => state.values)
 
     const handleUpdate = () => {
-        dispatch(fetchUpdateStaff(value))
-        // setValue("")
+        dispatch(fetchUpdateStaff(values))
     }
 
     return (
         <>
-            <input 
-            type="text" 
-            value={value}
-            required
-            style={{width:"88%"}}
-            onChange={(e) => setValue(e.target.value)}
+            <Form 
+            handleUpdate={handleUpdate}
+            handleHideFormUpdate={props.handleHideFormUpdate()}
             />
-            <button onClick={handleUpdate}> update </button>
         </>
     )
 }

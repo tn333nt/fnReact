@@ -1,14 +1,16 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import dateFormat from "dateformat"
-import { fetchDepartment } from "../../redux/action"
+import { fetchDepartment, fetchUpdateDepartment } from "../../redux/action"
 
 
 export default function Department() {
     const dispatch = useDispatch()
+    // update dep
     useEffect(() => {
-        dispatch(fetchDepartment())
+        dispatch(fetchUpdateDepartment())
     }, [dispatch])
+
     const departmentDetail = useSelector(state => {
         return state.departmentDetail
     })
@@ -17,6 +19,7 @@ export default function Department() {
     })
     console.log("departmentDetail", departmentDetail)
     console.log("department", department)
+
     return (
         <>
             <h1>Phòng ban: {department?.name}</h1>
