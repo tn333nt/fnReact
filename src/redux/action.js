@@ -9,7 +9,8 @@ export function addStaff(staff) {
 export function setValues(value) {
     return {
         type: "SET_VALUES",
-        payload: value
+        payload: value,
+        // payloadOption: optionValue
     }
 }
 
@@ -55,33 +56,33 @@ export function setStaffs(data) {
     }
 }
 
-export function setStaff(data) {
-    return {
-        type: "SET_STAFF",
-        payload: data
-    }
-}
-
-export function setDepartment(department) { // get dep from deps
-    return {
-        type: "SET_DEPARTMENT",
-        payload: department
-    }
-}
-
-// export function setDepartmentDetail(data) { // get dep detail from dep
+// export function setStaff(data) {
 //     return {
-//         type: "SET_DEPARTMENT_DETAIL",
+//         type: "SET_STAFF",
 //         payload: data
 //     }
 // }
 
-export function updateDepartment(data) { // update dep detail
+// export function setDepartment(department) { // get dep from deps
+//     return {
+//         type: "SET_DEPARTMENT",
+//         payload: department
+//     }
+// }
+
+export function setDepartmentDetail(data) { // get dep detail from dep
     return {
-        type: "UPDATE_DEPARTMENT_DETAIL",
+        type: "SET_DEPARTMENT_DETAIL",
         payload: data
     }
 }
+
+// export function updateDepartment(data) { // update dep detail
+//     return {
+//         type: "UPDATE_DEPARTMENT_DETAIL",
+//         payload: data
+//     }
+// }
 
 export function setDepartments(data) {
     return {
@@ -107,16 +108,16 @@ export function fetchStaffs() {
     }
 }
 
-export function fetchStaff() {
-    const id = window.location.pathname.split('/')[2];
-    return dispatch => {
-        fetch(`https://rjs101xbackend.herokuapp.com/staffs/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                dispatch(setStaff(data))
-            })
-    }
-}
+// export function fetchStaff() {
+//     const id = window.location.pathname.split('/')[2];
+//     return dispatch => {
+//         fetch(`https://rjs101xbackend.herokuapp.com/staffs/${id}`)
+//             .then(res => res.json())
+//             .then(data => {
+//                 dispatch(setStaff(data))
+//             })
+//     }
+// }
 
 export function fetchDepartments() { // fetch list dep
     return dispatch => {
@@ -128,33 +129,33 @@ export function fetchDepartments() { // fetch list dep
     }
 }
 
-// export function fetchDepartment() { // fetch dep detail
-//     const id = window.location.pathname.split('/')[2];
-//     return dispatch => {
-//         fetch(`https://rjs101xbackend.herokuapp.com/departments/${id}`)
-//             .then(res => res.json())
-//             .then(data => {
-//                 dispatch(setDepartmentDetail(data))
-//             })
-//     }
-// }
-
-export function fetchUpdateDepartment() { // update dep detail
+export function fetchDepartmentDetail() { // fetch dep detail
     const id = window.location.pathname.split('/')[2];
     return dispatch => {
-        fetch(`https://rjs101xbackend.herokuapp.com/Departments/${id}`, {
-            method: "POST",
-            body: JSON.stringify(),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-            }
-        })
+        fetch(`https://rjs101xbackend.herokuapp.com/departments/${id}`)
             .then(res => res.json())
             .then(data => {
-                dispatch(updateDepartment(data))
+                dispatch(setDepartmentDetail(data))
             })
     }
 }
+
+// export function fetchUpdateDepartment() { // update dep detail
+//     const id = window.location.pathname.split('/')[2];
+//     return dispatch => {
+//         fetch(`https://rjs101xbackend.herokuapp.com/Departments/${id}`, {
+//             method: "POST",
+//             body: JSON.stringify(),
+//             headers: {
+//                 "Content-type": "application/json; charset=UTF-8",
+//             }
+//         })
+//             .then(res => res.json())
+//             .then(data => {
+//                 dispatch(updateDepartment(data))
+//             })
+//     }
+// }
 
 export function fetchSalary() {
     return dispatch => {
@@ -205,9 +206,12 @@ export function fetchDeleteStaff(staff) {
 export function fetchUpdateStaff(value) {
     const id = window.location.pathname.split('/')[2];
     return dispatch => {
-        fetch(`https://rjs101xbackend.herokuapp.com/staffs/${id}`, {
+        fetch(`https://rjs101xbackend.herokuapp.com/staffs`, {
             method: "PATCH",
-            body: JSON.stringify(value),
+            body: JSON.stringify({
+                ...value,
+                id
+            }),
             // mode: 'cors',
             headers: {
                 "Content-type": "application/json; charset=UTF-8",

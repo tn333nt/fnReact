@@ -5,20 +5,23 @@ const initialState = {
   },
   staffs: [],
   staffList: [], // use to take new data to search after each time search
-  staff: [],
-  department: [],
+  // staff: [],
+  // department: [],
   departments: [],
   departmentDetail: [],
   salary: [],
   values: {
+    // input: {
     name: "",
     doB: "",
     salaryScale: "",
     startDate: "",
-    department: "",
+    departmentId: "Dept01",
     annualLeave: "",
     overTime: "",
     image: '/assets/images/alberto.png',
+    // },
+    // option: "Sale",
   },
   formState: {
     toAdd: false,
@@ -31,14 +34,20 @@ export default function rootReducer(state = initialState, action) {
 
     case "SET_VALUES": {
       return {
-        // ...state,
-        values: action.payload
+        ...state,
+        values: action.payload ? action.payload : state.values
       };
     }
 
+    // case "SET_OPTION": {
+    //   return {
+    //     option: action.payload
+    //   };
+    // }
+
     case "SET_FORM_STATE_ADD": {
       return {
-        // ...state,
+        ...state,
         formState: {
           toAdd: action.payload
         }
@@ -47,13 +56,13 @@ export default function rootReducer(state = initialState, action) {
 
     case "SET_FORM_STATE_UPDATE": {
       return {
-        // ...state,
+        ...state,
         formState: {
           toUpdate: action.payload
         }
       };
     }
-   
+
     //
     case "ADD_STAFF": {
       return {
@@ -95,12 +104,12 @@ export default function rootReducer(state = initialState, action) {
       };
     }
 
-    case "SET_STAFF": {
-      return {
-        ...state,
-        staff: action.payload
-      };
-    }
+    // case "SET_STAFF": {
+    //   return {
+    //     ...state,
+    //     staff: action.payload
+    //   };
+    // }
 
     case "SET_DEPARTMENTS": {
       return {
@@ -109,26 +118,26 @@ export default function rootReducer(state = initialState, action) {
       }
     }
 
-    case "SET_DEPARTMENT": {
-      return {
-        ...state,
-        department: action.payload
-      };
-    }
-
-    // case "SET_DEPARTMENT_DETAIL": {
+    // case "SET_DEPARTMENT": {
     //   return {
     //     ...state,
-    //     departmentDetail: action.payload,
-    //   }
+    //     department: action.payload
+    //   };
     // }
 
-    case "UPDATE_DEPARTMENT_DETAIL": {
+    case "SET_DEPARTMENT_DETAIL": {
       return {
         ...state,
         departmentDetail: action.payload,
       }
     }
+
+    // case "UPDATE_DEPARTMENT_DETAIL": {
+    //   return {
+    //     ...state,
+    //     departmentDetail: action.payload,
+    //   }
+    // }
 
     case "SET_SALARY": {
       return {

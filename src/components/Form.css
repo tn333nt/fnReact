@@ -1,6 +1,6 @@
 .background_ShowForm{
     background-color: rgba(129, 129, 129, 0.349);
-    position: absolute;
+    position: fixed;
     top:0;
     height: 100%;
     width: 100%;
@@ -14,7 +14,6 @@
     top: 50%;
     transform: translate(-50%, -50%);
     left: 50%;
-
 }
 
 .nav_Form button{
@@ -32,7 +31,6 @@
     margin-bottom: 21px;
 }
 
-
 .validate {
     margin: 0;
     color: red;
@@ -40,17 +38,16 @@
 }
 
 /* animation */
-.btn_ShowForm{
+.btn_Form{
     position: relative;
     padding: 9px;
     border-radius: 9px;
-    left: 30%;
     background-color: #3085d6;
     border: 3px solid #619dd6;
     color: #fff;
 }
 
-.btn_ShowForm:hover{
+.btn_Form:hover{
     animation : changeColor 1.5s ease-in-out forwards;
     cursor: pointer;
     font-size: larger;

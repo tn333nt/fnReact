@@ -1,23 +1,30 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import dateFormat from "dateformat"
-import { fetchDepartment, fetchUpdateDepartment } from "../../redux/action"
-
+import { fetchDepartment, fetchDepartmentDetail, fetchDepartments, setDepartment } from "../../redux/action"
+import { useParams } from "react-router-dom"
 
 export default function Department() {
     const dispatch = useDispatch()
-    // update dep
-    useEffect(() => {
-        dispatch(fetchUpdateDepartment())
-    }, [dispatch])
+
+    const { deptId } = useParams()
 
     const departmentDetail = useSelector(state => {
-        return state.departmentDetail
+        console.log("departmentDetail", state.departmentDetail)
+        return state.departmentDetail;
     })
+
     const department = useSelector(state => {
-        return state.department
-    })
-    console.log("departmentDetail", departmentDetail)
+        console.log(state.departments);
+        return state.departments.find(dep => dep.id === deptId)
+    });
+
+    useEffect(() => {
+        dispatch(fetchDepartments())
+        dispatch(fetchDepartmentDetail())
+        // dispatch(setDepartment(department))
+    }, [dispatch])
+
     console.log("department", department)
 
     return (
@@ -25,7 +32,7 @@ export default function Department() {
             <h1>Phòng ban: {department?.name}</h1>
             {departmentDetail && departmentDetail.length > 0 && departmentDetail.map(item => (
                 <div style={{ display: "flex" }}> {/* can not use gridTemplateColumns with repeat(), autoFit, ...? */}
-                    <img src={item.image.replace("asset/", 'assets/')} alt={item.name} width="15%" height="15%" style={{margin: 12}} />
+                    <img src={item.image.replace("asset/", 'assets/')} alt={item.name} width="15%" height="15%" style={{ margin: 12 }} />
                     <ul style={{ width: "60%" }}>
                         <li>Họ và tên : {item.name}</li>
                         <li>Ngày sinh : {dateFormat(item.doB, "dd/mm/yyyy")}</li>

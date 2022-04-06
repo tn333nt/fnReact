@@ -25,6 +25,7 @@
 .nav_staff {
     display: flex;
     justify-content: space-between;
+    margin: 0 30px;
 }
 
 @media screen and (max-width: 1086px ) {
