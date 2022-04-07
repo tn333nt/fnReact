@@ -5,14 +5,14 @@ import { searchStaffs } from "../../redux/action";
 export default function SearchStaffs() {
   const inputRef = useRef()
   const dispatch = useDispatch();
-
   const staffs = useSelector(state => state.staffList)
 
   const handleSearch = () => {
     const value = inputRef.current.value
 
     if (value) {
-      const data = staffs.filter(staff => (staff.name && staff.name.toLowerCase().includes(value.toLowerCase())));
+      const data = staffs.filter(staff => (staff.name 
+        && staff.name.toLowerCase().includes(value.toLowerCase()) ));
 
       dispatch(searchStaffs(data))
     }

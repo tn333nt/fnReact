@@ -4,14 +4,11 @@ const initialState = {
     search: "",
   },
   staffs: [],
-  staffList: [], // use to take new data to search after each time search
-  // staff: [],
-  // department: [],
+  staffList: [],
   departments: [],
   departmentDetail: [],
   salary: [],
   values: {
-    // input: {
     name: "",
     doB: "",
     salaryScale: "",
@@ -20,8 +17,6 @@ const initialState = {
     annualLeave: "",
     overTime: "",
     image: '/assets/images/alberto.png',
-    // },
-    // option: "Sale",
   },
   formState: {
     toAdd: false,
@@ -38,12 +33,6 @@ export default function rootReducer(state = initialState, action) {
         values: action.payload ? action.payload : state.values
       };
     }
-
-    // case "SET_OPTION": {
-    //   return {
-    //     option: action.payload
-    //   };
-    // }
 
     case "SET_FORM_STATE_ADD": {
       return {
@@ -63,7 +52,6 @@ export default function rootReducer(state = initialState, action) {
       };
     }
 
-    //
     case "ADD_STAFF": {
       return {
         ...state,
@@ -95,7 +83,6 @@ export default function rootReducer(state = initialState, action) {
       };
     }
 
-    //
     case "SET_STAFFS": {
       return {
         ...state,
@@ -104,13 +91,6 @@ export default function rootReducer(state = initialState, action) {
       };
     }
 
-    // case "SET_STAFF": {
-    //   return {
-    //     ...state,
-    //     staff: action.payload
-    //   };
-    // }
-
     case "SET_DEPARTMENTS": {
       return {
         ...state,
@@ -118,26 +98,12 @@ export default function rootReducer(state = initialState, action) {
       }
     }
 
-    // case "SET_DEPARTMENT": {
-    //   return {
-    //     ...state,
-    //     department: action.payload
-    //   };
-    // }
-
     case "SET_DEPARTMENT_DETAIL": {
       return {
         ...state,
         departmentDetail: action.payload,
       }
     }
-
-    // case "UPDATE_DEPARTMENT_DETAIL": {
-    //   return {
-    //     ...state,
-    //     departmentDetail: action.payload,
-    //   }
-    // }
 
     case "SET_SALARY": {
       return {

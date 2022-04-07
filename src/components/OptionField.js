@@ -1,5 +1,4 @@
 export default function OptionField(props) {
-
     return (
         <div className="item_Form">
             <label htmlFor={props.name}>{props.name} </label>
@@ -8,7 +7,6 @@ export default function OptionField(props) {
                 name={props.name}
                 value={props.value}
                 onChange={props.handleInputChange}
-                // onChange={props.handleOptionChange}
             >
                 <option value="Dept01">sale</option>
                 <option value="Dept02">hr</option>

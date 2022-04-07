@@ -6,22 +6,8 @@ import ShowSalary from "./features/salary/ShowSalary.js";
 import ShowDepartments from "./features/department/ShowDepartments.js";
 import Department from "./features/department/Department.js";
 import Footer from "./ui/footer/Footer";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { fetchDepartmentDetail, fetchDepartments, fetchStaffs } from "./redux/action";
-
 
 function App() {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchStaffs());
-  }, [dispatch])
-
-  // useEffect(() => {
-  //   dispatch(fetchDepartmentDetail())
-  // }, [dispatch])
-
   return (
     <div>
       <NavBar />

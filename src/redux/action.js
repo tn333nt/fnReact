@@ -1,16 +1,9 @@
 
-export function addStaff(staff) {
-    return {
-        type: "ADD_STAFF",
-        payload: staff
-    }
-}
-
+// state
 export function setValues(value) {
     return {
         type: "SET_VALUES",
         payload: value,
-        // payloadOption: optionValue
     }
 }
 
@@ -25,6 +18,14 @@ export function setFormStateUpdate(state) {
     return {
         type: "SET_FORM_STATE_UPDATE",
         payload: state
+    }
+}
+
+// features
+export function addStaff(staff) {
+    return {
+        type: "ADD_STAFF",
+        payload: staff
     }
 }
 
@@ -56,33 +57,12 @@ export function setStaffs(data) {
     }
 }
 
-// export function setStaff(data) {
-//     return {
-//         type: "SET_STAFF",
-//         payload: data
-//     }
-// }
-
-// export function setDepartment(department) { // get dep from deps
-//     return {
-//         type: "SET_DEPARTMENT",
-//         payload: department
-//     }
-// }
-
-export function setDepartmentDetail(data) { // get dep detail from dep
+export function setDepartmentDetail(data) { 
     return {
         type: "SET_DEPARTMENT_DETAIL",
         payload: data
     }
 }
-
-// export function updateDepartment(data) { // update dep detail
-//     return {
-//         type: "UPDATE_DEPARTMENT_DETAIL",
-//         payload: data
-//     }
-// }
 
 export function setDepartments(data) {
     return {
@@ -98,6 +78,7 @@ export function setSalary(data) {
     }
 }
 
+// fetch data
 export function fetchStaffs() {
     return dispatch => {
         fetch("https://rjs101xbackend.herokuapp.com/")
@@ -108,18 +89,7 @@ export function fetchStaffs() {
     }
 }
 
-// export function fetchStaff() {
-//     const id = window.location.pathname.split('/')[2];
-//     return dispatch => {
-//         fetch(`https://rjs101xbackend.herokuapp.com/staffs/${id}`)
-//             .then(res => res.json())
-//             .then(data => {
-//                 dispatch(setStaff(data))
-//             })
-//     }
-// }
-
-export function fetchDepartments() { // fetch list dep
+export function fetchDepartments() { 
     return dispatch => {
         fetch("https://rjs101xbackend.herokuapp.com/departments")
             .then(res => res.json())
@@ -129,7 +99,7 @@ export function fetchDepartments() { // fetch list dep
     }
 }
 
-export function fetchDepartmentDetail() { // fetch dep detail
+export function fetchDepartmentDetail() { 
     const id = window.location.pathname.split('/')[2];
     return dispatch => {
         fetch(`https://rjs101xbackend.herokuapp.com/departments/${id}`)
@@ -139,23 +109,6 @@ export function fetchDepartmentDetail() { // fetch dep detail
             })
     }
 }
-
-// export function fetchUpdateDepartment() { // update dep detail
-//     const id = window.location.pathname.split('/')[2];
-//     return dispatch => {
-//         fetch(`https://rjs101xbackend.herokuapp.com/Departments/${id}`, {
-//             method: "POST",
-//             body: JSON.stringify(),
-//             headers: {
-//                 "Content-type": "application/json; charset=UTF-8",
-//             }
-//         })
-//             .then(res => res.json())
-//             .then(data => {
-//                 dispatch(updateDepartment(data))
-//             })
-//     }
-// }
 
 export function fetchSalary() {
     return dispatch => {
@@ -190,10 +143,8 @@ export function fetchDeleteStaff(staff) {
         fetch(`https://rjs101xbackend.herokuapp.com/staffs/${staff.id}`, {
             method: "DELETE",
             body: JSON.stringify(staff),
-            // mode: 'cors',
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                // 'Access-Control-Allow-Origin': '*'
             }
         })
             .then(res => res.json())
@@ -212,10 +163,8 @@ export function fetchUpdateStaff(value) {
                 ...value,
                 id
             }),
-            // mode: 'cors',
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                // 'Access-Control-Allow-Origin': '*'
             }
         })
             .then(res => res.json())

@@ -5,9 +5,7 @@ import { fetchSalary } from "../../redux/action";
 import "./ShowSalary.css";
 
 export default function ShowSalary() {
-
   const navigate = useNavigate();
-
   const STAFFS = useSelector(state => state.salary)
 
   const dispatch = useDispatch()

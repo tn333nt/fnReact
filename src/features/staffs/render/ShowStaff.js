@@ -1,34 +1,28 @@
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import dateFormat from "dateformat";
 import { useDispatch, useSelector } from "react-redux";
-import "./ShowStaff.css";
-import { useEffect } from "react";
+import { fetchDepartments, setValues, setFormStateUpdate } from "../../../redux/action";
 import UpdateStaff from "../UpdateStaff";
-import { fetchDepartments, setValues, setFormStateUpdate, setStaff, setStaffs } from "../../../redux/action";
+import "./ShowStaff.css";
 
-// problem 2
-// why ? có chỉnh sửa gì liên quan đâu ?
 export default function ShowStaff() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { staffId } = useParams()
-
   const formStateUpdate = useSelector(state => state.formState?.toUpdate)
   const staff = useSelector(state => state?.staffs?.find(staff => staff.id === +staffId));
+
   const departments = useSelector(state => state.departments)
+  const department = departments && staff 
+    ? departments.find(department => department.id === staff?.departmentId) 
+    : {}
 
   useEffect(() => {
     dispatch(fetchDepartments());
     staff && dispatch(setValues(staff));
   }, [dispatch, staff])
 
-  // const department = departments.find(department => department.id && department.id === staff.departmentId)
-  // ko phai do cai id ma la nguyen cai dep luon
-  const department = departments && staff ? departments.find(department => department.id === staff?.departmentId) : {}
-
-  console.log(staff);
-  console.log(departments);
-  console.log(department);
 
   return (
     <div className="container_staff">
@@ -56,7 +50,7 @@ export default function ShowStaff() {
               <li>
                 Ngày vào công ty : {dateFormat(staff?.startDate, "dd/mm/yyyy")}
               </li>
-              <li>Phòng ban : {department?.name}</li> {/* van de co ve o day */}
+              <li>Phòng ban : {department?.name}</li>
               <li>Số ngày nghỉ còn lại : {staff?.annualLeave}</li>
               <li>Số ngày đã làm thêm : {staff?.overTime}</li>
             </ul>

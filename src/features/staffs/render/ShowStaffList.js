@@ -1,19 +1,20 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import "./ShowStaffList.css";
+import {  fetchStaffs, setFormStateAdd } from "../../../redux/action";
 import AddStaff from "../AddStaff.js";
 import SearchStaffs from "../SearchStaffs";
-import { fetchStaffs, setFormStateAdd, setStaff } from "../../../redux/action";
 import DeleteStaff from "../DeleteStaff";
+import "./ShowStaffList.css";
 
 export default function ShowStaffList() {
-  const navigate = useNavigate();
   const dispatch = useDispatch()
-
   const formStateAdd = useSelector(state => state.formState?.toAdd)
-
   const staffs = useSelector(state => state.staffs);
+  
+  useEffect(() => {
+    dispatch(fetchStaffs());
+  }, [dispatch]) 
 
   return (
     <>

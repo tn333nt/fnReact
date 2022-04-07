@@ -10,7 +10,6 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
-      {/* test */}
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

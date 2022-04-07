@@ -1,4 +1,3 @@
-import React from 'react'
 export default function InputField(props) {
     return (
         <div className="item_Form">

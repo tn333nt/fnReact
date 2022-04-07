@@ -1,35 +1,23 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
+import { setFormStateAdd, setFormStateUpdate, setValues } from "../redux/action"
 import InputField from "./InputField"
 import OptionField from "./OptionField"
 import SubmitButton from "./SubmitButton"
 import FormTitle from "./FormTitle"
 import "./Form.css"
-import { setOption, setFormStateAdd, setFormStateUpdate, setValues, updateStaff, addStaff } from "../redux/action"
 
 export default function Form(props) {
     const dispatch = useDispatch()
-
     const values = useSelector(state => state.values)
-    // const option = useSelector(state => state.values.option)
-
-    console.log("values in form", values)
+    const formStateAdd = useSelector(state => state.formState.toAdd)
+    const formStateUpdate = useSelector(state => state.formState.toUpdate)
 
     const handleInputChange = (e) => {
         dispatch(setValues({
             ...values,
             [e.target.name]: e.target.value
         }))
-        console.log(e.target.value);
-        console.log(e.target.name);
     }
-
-    // const handleOptionChange = (e) => {
-    //     dispatch(setValues(e.target.value))
-    // }
-
-    const formStateAdd = useSelector(state => state.formState.toAdd)
-    const formStateUpdate = useSelector(state => state.formState.toUpdate)
 
     const handleHideForm = () => {
         formStateAdd && dispatch(setFormStateAdd(false))
@@ -69,7 +57,6 @@ export default function Form(props) {
                     <OptionField
                         name="departmentId"
                         id="departmentId"
-                        // value={option}
                         value={values.departmentId}
                         handleInputChange={handleInputChange}
                         htmlFor="departmentId" />
