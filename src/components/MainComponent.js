@@ -8,7 +8,7 @@ import Menu from './MenuComponent';
 import DishDetail from './DishdetailComponent';
 import Contact from './ContactComponent';
 
-const mapStateToProps = state => { // useSelector
+const mapStateToProps = state => { 
     return {
         dishes: state.dishes,
         comments: state.comments,
@@ -65,11 +65,3 @@ class Main extends Component {
 }
 
 export default withRouter(connect(mapStateToProps)(Main)); 
-// connect -> pass state to sub routes
-// wR -> 
-    // get access to the history object’s properties and the closest <Route>'s
-    // pass updated match, location, history props
-    //  != from Route : auto pass all 3 when use with component/render/children + render()
-
-
-// ref connecting to redux https://thoughtbot.com/blog/using-redux-with-react-hooks
