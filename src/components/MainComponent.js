@@ -27,13 +27,13 @@ const mapDispatchToProps = dispatch => ({
 
 class Main extends Component {
 
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
-    onDishSelect(dishId) {
-        this.setState({ selectedDish: dishId });
-    }
+    // onDishSelect(dishId) {
+    //     this.setState({ selectedDish: dishId });
+    // }
 
     render() {
         const HomePage = () => {
@@ -61,7 +61,7 @@ class Main extends Component {
                 <div>
                     <Switch>
                         <Route path='/home' component={HomePage} />
-                        <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />
+                        {/* <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} /> */}
                         <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
                         <Route path='/menu/:dishId' component={DishWithId} />
                         <Route exact path='/contactus' component={Contact} />

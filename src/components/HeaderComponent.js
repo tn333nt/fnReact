@@ -1,3 +1,4 @@
+import React, { Component } from 'react'
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
@@ -82,7 +83,6 @@ class Header extends Component {
                                 <Label htmlFor="username">Username</Label>
                                 <Input type="text" id="username" name="username"
                                     innerRef={(input) => this.username = input} /> 
-                                    {/* save user info into Header ? */}
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="password">Password</Label>
