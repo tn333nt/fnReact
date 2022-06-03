@@ -201,6 +201,37 @@
       "comment": "It's your birthday, we're gonna party!",
       "author": "25 Cent",
       "date": "2011-12-02T17:57:28.556094Z"
+    },
+    {
+      "dishId": 0,
+      "rating": 1,
+      "date": "2022-06-03T11:10:53.658Z",
+      "id": 20
+    },
+    {
+      "dishId": 0,
+      "rating": 1,
+      "date": "2022-06-03T11:11:04.708Z",
+      "id": 21
+    },
+    {
+      "dishId": 0,
+      "rating": 1,
+      "comment": "have u seen it ? it only re-render this component & nothing else is loaded :D\nspa !",
+      "date": "2022-06-03T11:13:01.445Z",
+      "id": 22
+    },
+    {
+      "dishId": 0,
+      "rating": 1,
+      "date": "2022-06-03T11:13:12.882Z",
+      "id": 23
+    },
+    {
+      "dishId": 0,
+      "rating": 1,
+      "date": "2022-06-03T11:13:20.461Z",
+      "id": 24
     }
   ],
   "promotions": [
