@@ -15,10 +15,3 @@ export const Dishes = (state = { isLoading: true, errMess: null, dishes:[]}, act
             return state;
     }
 };
-
-
-
-// ...state => create new obj FROM THAT -> return that obj with new changes
-
-// no err? 
-// maybe cuz of splitting reducers => 'state' points to specific one => no need to spread out ?
