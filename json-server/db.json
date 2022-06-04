@@ -232,6 +232,13 @@
       "rating": 1,
       "date": "2022-06-03T11:13:20.461Z",
       "id": 24
+    },
+    {
+      "dishId": 0,
+      "rating": 1,
+      "comment": "no need bind",
+      "date": "2022-06-04T10:14:32.430Z",
+      "id": 25
     }
   ],
   "promotions": [

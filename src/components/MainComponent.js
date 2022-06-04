@@ -9,6 +9,7 @@ import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import DishDetail from './DishdetailComponent';
 import Contact from './ContactComponent';
+import Test from './test';
 import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
@@ -72,6 +73,7 @@ class Main extends Component {
                         <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
                             <Switch location={this.props.location}>
                                 <Route path='/home' component={HomePage} />
+                                <Route path='/about' component={Test} />
                                 {/* <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} /> */}
                                 <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
                                 <Route path='/menu/:dishId' component={DishWithId} />
